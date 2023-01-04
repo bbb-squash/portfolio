@@ -1,7 +1,7 @@
 <template>
-  <v-app style="background-color: #f5f5f3">
+  <v-app class="app-background-color">
     <v-header :contents="contents"></v-header>
-    <v-main style="padding: 25px 0px 0px;">
+    <v-main class="v-main-container">
       <v-container class="main-contents">
         <router-view></router-view>
       </v-container>
@@ -11,16 +11,12 @@
 
 <script>
 import Header from '@/components/modules/Header';
-import AboutMe from '@/components/pages/AboutMe';
-import Work from '@/components/pages/Work';
 
 export default {
   name: 'App',
 
   components: {
-    'v-header': Header,
-    'v-about-me': AboutMe,
-    'v-work': Work,
+    'v-header': Header
   },
 
   data: () => ({
@@ -35,19 +31,30 @@ export default {
 </script>
 
 <style>
-  * {
-    font-family: YuGothic, "游ゴシック Medium", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif !important;
+  .app-background-color {
+    background-color: #f5f5f3 !important;
+  }
+  .header-divider {
+    width: 15%;
+    margin: 0 auto;
+    border: 1px solid;
+    background-color: #044c64;
+  }
+  .v-main-container {
+    padding: 25px 0px 0px !important;
   }
   .main-contents {
     background-color: white;
     padding-top: 30px;
+    /* max-width: 1903px; */
+    min-height: 100%;
   }
   .content-text {
     font-size: 1.125rem;
   }
 
-  .v-application p {
-    margin-bottom: 0px;
+  h1.text-h3 {
+    color: #044c64;
   }
 
 </style>

@@ -3,8 +3,8 @@
     <!-- #004e65 -->
     <v-app-bar
     app
-    color="#444"
-    dark
+    color="#fff"
+    white
     dense
     >
       <v-container class="d-flex align-center">
@@ -93,7 +93,7 @@
   .link-text{
     display: inline-block;
     position: relative;
-    color: white;
+    color: #044c64;
     text-decoration: none;
   }
   .link-text:before{
@@ -103,7 +103,7 @@
     bottom: -4px;
     width: 100%;
     height: 3px;
-    background: white;
+    background: #044c64;
     transform: scale(0, 1);
     transform-origin: left;
     transition: 0.4s;

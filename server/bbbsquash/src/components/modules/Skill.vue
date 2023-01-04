@@ -1,8 +1,9 @@
 <template>
-  <section id="skill">
-    <v-row justify="center" class="contents-header">
+  <section id="skill" class="mb-5">
+    <v-row justify="center" class="mb-2">
       <h1 class="text-h3">Skill</h1>
     </v-row>
+    <v-divider class="header-divider"></v-divider>
     <v-row justify="center mt-4">
       <template v-for="(content, index) in contents">
 
@@ -25,7 +26,7 @@
             <v-divider></v-divider>
             <v-layout wrap class="dialog-content align-center">
               <v-flex xs12 sm2 md2>
-                <h2>概要</h2>
+                <h2 style="padding-bottom: 15%;">概要</h2>
               </v-flex>
               <v-flex xs12 sm10 md10 class="text-left">
                 <p>{{ convertArrayToText(index) }}</p>
@@ -126,44 +127,44 @@ export default {
     contents: [
       { 
         title: 'ポートフォリオサイト', 
-        introduction: ['vue + 〇〇で実装。', 'モダンなフロント言語を使用した開発を行っていなかったため、トレーニングの意味も込めて作成。', '調べながら、合間に時間に作成して何だかんだ2週間くらいかかりました。'], 
+        introduction: ['よく見る自己紹介サイトを作ってみようというモチベーションで作成開始。', 'モダンなフロント言語を使用した開発を行っていなかったため、トレーニングの意味も込めてVue.jsを採用。', '調べながら、合間に時間に作成して何だかんだ1ヶ月くらいかかりました。'], 
         img: 'portfolio_screen.png', 
         tec: ['vue-logo.png', 'express-logo.png', 'lightsail-logo.png'], 
         dialog: false 
       },
       { 
         title: '介護業界向けwebサービス', 
-        introduction: ['介護業界に知人がいる友人が耳にした、実際の介護現場の課題を解決できるようなWebサービスを製作中。', 'モバイルアプリと連携できるようになるまで作り込みたい。'], 
+        introduction: ['介護業界向けSNSサービス。', '従業員の方のBPRの他に、介護業界に知人がいる友人が耳にした、実際の介護現場の課題を解決できるような機能を構築中。', 'モバイルアプリと連携できるようになるまで作り込みたい。'], 
         img: 'preparing.png', 
         tec: ['vue-logo.png', 'rails-logo.png', 'mysql-logo.png', 'rds-logo.png', 'lightsail-logo.png'], 
         dialog: false 
       },
       { 
         title: 'ツイートボット', 
-        introduction: ['Twitterのコンテンツ拡充、情報発信のため作成。', '定型文ではなく、webスクレイピングをして得られた情報をツイートできるよう、サーバで定期処理するように実装。'], 
+        introduction: ['Twitterで情報の更新があった場合にツイートするシステム。', 'Twitterアカウントのコンテンツ拡充、情報発信のため作成。', 'そのため、webスクレイピングをし得られた情報をツイートできるよう、サーバで定期処理するように実装。'], 
         img: 'tweetbot.png', 
         tec: ['nodejs-logo.png', 'mysql-logo.png', 'tweet-api-logo.png', 'lightsail-logo.png'], 
         dialog: false 
       },
       { 
         title: 'アセスメントツール', 
-        introduction: ['アンケートフォームから回答した結果を集計し、採点・レポート作成を行うシステムを構築。', 'google workspace + awsで実装。'], 
+        introduction: ['アンケートフォームから回答した結果を集計し、採点・レポート作成を行うシステムを構築。', 'Google API + AWSで実装。'], 
         img: 'radar_chart.png', 
         tec: ['lambda-logo.png', 's3-logo.png', 'ses-logo.png', 'google-api-logo.png'], 
         dialog: false 
       },
       { 
         title: 'メール配信サービス', 
-        introduction: ['リアルタイム情報を分析し、条件にマッチした'], 
+        introduction: ['リアルタイム情報を分析し、条件にマッチした対象者へメールを配信するシステム。', '分析処理が専門的な技術かつCPUを大量に消費するため、サーバサイズの検討がいつも以上に必要になる案件であった。', ], 
         img: 'mail_service.png', 
         tec: ['azure-vm-logo.png', 'blob-logo.png', 'sendgrid-logo.png', 'pandas-logo.png'], 
         dialog: false 
       },
       { 
         title: '業務効率化チャットボット', 
-        introduction: [], 
+        introduction: ['日常業務の定型処理を効率化するチャットボット。', 'アジャイル開発で何度もサイクルを回し改修を重ねた。', '基本設計から実装・テスト・インフラ構築まで全て担当。', ], 
         img: 'chatbot.png', 
-        tec: ['nodejs-logo.png', 's3-logo.png', 'lightsail-logo.png'], 
+        tec: ['nodejs-logo.png', 's3-logo.png', 'ec2-logo.png'], 
         dialog: false 
       }
       

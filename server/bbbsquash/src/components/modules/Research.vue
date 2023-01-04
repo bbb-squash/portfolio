@@ -1,9 +1,10 @@
 <template>
   <section id="research">
-    <v-row justify="center" class="contents-header">
+    <v-row justify="center" class="mb-2">
       <h1 class="text-h3">Research</h1>
     </v-row>
-    <v-container class="grey lighten-5 rounded-lg pa-5 mb-5">
+    <v-divider class="header-divider"></v-divider>
+    <v-container class="grey lighten-5 rounded-lg pa-5 mb-5  mt-4">
       <v-row justify="center">
         <div class="col-4 text-right">
           <span class="font-italic">2021-03-05</span>

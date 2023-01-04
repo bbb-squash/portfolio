@@ -1,109 +1,150 @@
 <template>
-  <section id="profile">
-    <v-row justify="center" class="contents-header text-center">
+  <section id="profile" class="mb-5">
+    <v-row justify="center" class="mb-2">
       <h1 class="text-h3">Profile</h1>
     </v-row>
-    <v-container class="lighten-5 rounded-lg pa-5 mb-5">
-      <div v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
-        <v-row>
-          <img src="@/assets/profile.png" alt="Logo" class="profile_image">
-        </v-row>
-        <v-row>
-          <v-col cols="12">
+    <v-divider class="header-divider"></v-divider>
+    <div v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm">
+      <v-row>
+        <img src="@/assets/profile.png" alt="Logo" class="profile_image">
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-card elevation="2" outlined>
+            <v-card-title :class="introduction.title_color" class="font-weight-bold">{{ introduction.name }}</v-card-title>
+            <template v-for="(text, index) in introduction.texts">
+              <p :key="index" class="v-card-text text-body-1">{{ text }}</p>
+            </template>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row style="display: block">
+        <template v-for="job in jobs">
+          <v-col cols="12" :key="job.name">
             <v-card elevation="2" outlined>
-              <v-card-title :class="introduction.title_color" class="font-weight-bold">{{ introduction.name }}</v-card-title>
-              <template v-for="(text, index) in introduction.texts">
-                <p :key="index" class="v-card-text text-body-1">{{ text }}</p>
+              <v-card-title :class="job.title_color" class="font-weight-bold">{{ job.name }}</v-card-title>
+              <template v-for="(text, index) in job.introduction">
+                <h3 :key="index" class="v-card-text text-body-1">{{ text }}</h3>
               </template>
             </v-card>
           </v-col>
-        </v-row>
-        <v-row style="display: block">
-          <template v-for="job in jobs">
-            <v-col cols="12" :key="job.name">
-              <v-card elevation="2" outlined>
-                <v-card-title :class="job.title_color" class="font-weight-bold">{{ job.name }}</v-card-title>
-                <template v-for="(text, index) in job.introduction">
-                  <h3 :key="index" class="v-card-text text-body-1">{{ text }}</h3>
+        </template>
+      </v-row>
+    </div>
+
+    <v-container v-else>
+      <v-row>
+        <v-col cols="4">
+          <v-card elevation="2" outlined class="profile-card">
+            <img src="@/assets/profile.png" alt="Logo" class="profile_image">
+            
+            <div class="profile-contents clearfix">
+
+              <v-list subheader two-line>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>name</v-list-item-title>
+                    <v-list-item-subtitle>bbb-squash</v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <hr style="width: 90%; margin: 0 auto; clear: both;">
+              <v-list header two-line>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>occupation</v-list-item-title>
+                    <v-list-item-subtitle>consultant/engineer</v-list-item-subtitle>
+                    <!-- <v-list-item-subtitle>ライブハウス</v-list-item-subtitle>
+                    <v-list-item-subtitle>シーシャーバー</v-list-item-subtitle> -->
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <hr style="width: 90%; margin: 0 auto; clear: both;">
+              <v-list subheader two-line>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>hobby</v-list-item-title>
+                    <v-list-item-subtitle>フットサル, ライブハウス, シーシャバー</v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+              <hr style="width: 90%; margin: 0 auto; clear: both;">
+              <v-list subheader two-line>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>strength finder</v-list-item-title>
+                    <v-list-item-subtitle>ポジティブ, 調和性, 包含</v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+
+              <!-- <v-list>
+                <v-list-item-group>
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-inbox</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title v-text="Inbox"></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list> -->
+
+              <!-- <div class="profile-text-column">
+                <v-card-subtitle><p class="text-body-1">趣味</p></v-card-subtitle>
+                <v-card-subtitle>
+                  <v-badge bordered inline tile text="趣味">趣味</v-badge>
+                </v-card-subtitle>
+              </div>
+              <div class="profile-text">
+                <template v-if="$vuetify.breakpoint.xl">
+                  <v-card-subtitle><p class="text-body-1">フットサル、音楽, シーシャバー</p></v-card-subtitle>
+                </template>
+                <template else>
+                  <v-card-subtitle><p class="text-body-1">フットサル、音楽</p></v-card-subtitle>
+                  <v-card-subtitle><p class="text-body-1">シーシャバー</p></v-card-subtitle>
+                </template>
+              </div>
+
+              <div class="profile-text-column">
+                <v-card-subtitle><p class="text-body-1">ストレングス・ファインダー</p></v-card-subtitle>
+              </div>
+              <div class="profile-text">
+                <v-card-subtitle><p class="text-body-1">「ポジティブ」</p></v-card-subtitle>
+                <v-card-subtitle><p class="text-body-1">「調和性」、「包含」</p></v-card-subtitle>
+              </div> -->
+            </div>
+              
+          </v-card>
+        </v-col>
+        <v-col cols="8">
+          <v-row>
+            <v-col cols="12">
+              <v-card elevation="2" outlined class="pb-2">
+                <v-card-title :class="introduction.title_color" class="font-weight-bold">{{ introduction.name }}</v-card-title>
+                <template v-for="(text, index) in introduction.texts">
+                  <p :key="index" class="content-text introduction-card-text">{{ text }}</p>
                 </template>
               </v-card>
             </v-col>
-          </template>
-        </v-row>
-      </div>
-
-      <div class="container" v-else>
-        <v-row>
-          <v-col cols="4">
-            <v-card elevation="2" outlined class="profile-card">
-              <img src="@/assets/profile.png" alt="Logo" class="profile_image">
-
-              <div class="profile-contents clearfix">
-                <div class="profile-text-column">
-                  <v-card-subtitle><p class="text-lg-h6">name:</p></v-card-subtitle>
-                </div>
-                <div class="profile-text">
-                  <v-card-subtitle><span class="text-lg-h5 profile-italic">bbb-squash</span></v-card-subtitle>
-                </div>
-
-                <div class="profile-text-column">
-                  <v-card-subtitle><p class="text-lg-h6">occupation:</p></v-card-subtitle>
-                </div>
-                <div class="profile-text">
-                  <v-card-subtitle><span class="text-lg-h5 profile-italic">engineer/consultant</span></v-card-subtitle>
-                </div>
-              </div>
-              
-              <hr style="width: 90%; margin: 0 auto; clear: both;">
-              <div class="profile-contents clearfix">
-                <div class="profile-text-column">
-                  <v-card-subtitle><p class="text-lg-body-1">趣味</p></v-card-subtitle>
-                </div>
-                <div class="profile-text">
-                  <v-card-subtitle><p class="text-lg-body-1">フットサル、音楽</p></v-card-subtitle>
-                  <v-card-subtitle><p class="text-lg-body-1">シーシャバー</p></v-card-subtitle>
-                  <!-- <v-card-subtitle><span class="text-lg-h5 profile-italic">bbb-squash</span></v-card-subtitle> -->
-                </div>
-
-                <div class="profile-text-column">
-                  <v-card-subtitle><p class="text-lg-body-1">ストレングス・ファインダー</p></v-card-subtitle>
-                </div>
-                <div class="profile-text">
-                  <v-card-subtitle><p class="text-lg-body-1">「ポジティブ」</p></v-card-subtitle>
-                  <v-card-subtitle><p class="text-lg-body-1">「調和性」、「包含」</p></v-card-subtitle>
-                  <!-- <v-card-subtitle><span class="text-lg-h5 profile-italic">engineer/consultant</span></v-card-subtitle> -->
-                </div>
-              </div>
-                
-            </v-card>
-          </v-col>
-          <v-col cols="8">
-            <v-row>
-              <v-col cols="12">
+          </v-row>
+          <v-row>
+            <template v-for="job in jobs">
+              <v-col cols="12" :key="job.name">
                 <v-card elevation="2" outlined class="pb-2">
-                  <v-card-title :class="introduction.title_color" class="font-weight-bold">{{ introduction.name }}</v-card-title>
-                  <template v-for="(text, index) in introduction.texts">
-                    <p :key="index" class="content-text introduction-card-text">{{ text }}</p>
-                  </template>
+                  <v-card-title :class="job.title_color" class="font-weight-bold card-title">{{ job.name }}</v-card-title>
+                  <ul :key="index" v-for="(text, index) in job.introduction">
+                    <li class="content-text jobs-card-text">{{ text }}</li>
+                  </ul>
                 </v-card>
               </v-col>
-            </v-row>
-            <v-row>
-              <template v-for="job in jobs">
-                <v-col cols="12" :key="job.name">
-                  <v-card elevation="2" outlined class="pb-2">
-                    <v-card-title :class="job.title_color" class="font-weight-bold card-title">{{ job.name }}</v-card-title>
-                    <ul :key="index" v-for="(text, index) in job.introduction">
-                      <li class="content-text jobs-card-text">{{ text }}</li>
-                    </ul>
-                  </v-card>
-                </v-col>
-              </template>
-            </v-row>
-          </v-col>
-        </v-row>
-      </div>
+            </template>
+          </v-row>
+        </v-col>
+      </v-row>
     </v-container>
+    <!-- </v-container> -->
   </section>
 </template>
 
@@ -144,15 +185,6 @@ export default {
 </script>
 
 <style>
-.about-me-contents {
-  font-family: 'メイリオ', 'Meiryo', sans-serif;
-}
-
-.contents-header {
-  margin-bottom: 20px;
-  color: #787878;
-}
-
 .page-subject {
   font-size: 3.75rem;
 }
@@ -162,10 +194,7 @@ export default {
   font-family: cursive;
   text-align: center;
   font-size: 0px;
-}
-
-.profile-contents {
-  margin: 20px 0;
+  /* max-height: 650px; */
 }
 
 .clearfix:after {
@@ -175,12 +204,13 @@ export default {
 }
 
 .profile_image {
-  width: 90%;
-  height: 60%;
+  width: 80%;
+  /* height: 65%; */
   margin: 0 auto;
-  padding-top: 10%;
+  padding-top: 5%;
   display: block;
   overflow: hidden;
+  background-size: contain;
 }
 
 .profile-text-column {
@@ -196,6 +226,21 @@ export default {
   text-align: left;
 }
 
+.profile-contents {
+  margin-top: 2%;
+}
+
+.profile-contents > v-list >  {
+  margin-top: 2%;
+}
+
+.profile-contents > .v-list > .v-list-item > .v-list-item-content > .v-list-title {
+  font-size: 20px;
+}
+.profile-contents > .v-list > .v-list-item > .v-list-item-content > .v-list-subtitle{
+  font-size: 10px;
+}
+
 .profile-text-column > .v-card__subtitle {
   padding: 2px !important;
 }
@@ -205,26 +250,26 @@ export default {
 }
   
 .title-color-introduction {
-  background-color: teal;
+  background-color: #044c64;
   color: white;
 }
 
 .title-color-consultant {
   /* background-color: #B39DDB; */
-  background-color: teal;
+  background-color: #044c64;
   color: white;
 }
 
 .title-color-engineer {
   /* background-color: #B39DDB; */
-  background-color: teal;
+  background-color: #044c64;
   color: white;
 }
 
-.v-application .text-lg-h5 {
+.v-application .text-h5 {
   font-family: cursive !important;
 }
-.v-application .text-lg-body-1 {
+.v-application .text-body-1 {
   font-family: cursive !important;
 } 
 

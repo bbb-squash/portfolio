@@ -1,8 +1,9 @@
 <template>
   <section id="history">
-    <v-row justify="center" class="contents-header">
+    <v-row justify="center" class="mb-2">
       <h1 class="text-h3">History</h1>
     </v-row>
+    <v-divider class="header-divider"></v-divider>
     <v-container class="lighten-5">
       <v-row v-for="year in Object.keys(history)" :key="year">
         <v-col cols="3" class="time-series text-right pr-5">
@@ -56,11 +57,6 @@ export default {
 
 
 <style>
-  .contents-header {
-    margin-bottom: 20px;
-    color: #787878;
-  }
-
   .time-series {
     border-right: 2px solid rgba(0, 0, 0, 0.12);
     padding-bottom: 10%;
