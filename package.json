@@ -9,9 +9,19 @@
   },
   "dependencies": {
     "@line/bot-sdk": "^7.4.0",
+    "aws-sdk": "^2.1290.0",
+    "buffer": "^6.0.3",
     "core-js": "^3.6.5",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "net": "^1.0.2",
+    "node-fetch": "^3.3.0",
+    "stream": "0.0.2",
+    "url": "^0.11.0",
+    "util": "^0.12.5",
     "vue": "^2.6.11",
-    "vuetify": "^2.4.0"
+    "vuetify": "^2.4.0",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@mdi/font": "^6.5.95",

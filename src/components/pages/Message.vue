@@ -60,30 +60,65 @@
       sns_logos: ['qiita-logo.png', 'wantedly-logo.png']
     }),
     methods: {
-      submit: function (event) {
-        // メソッド内の `this` は、 Vue インスタンスを参照します
-        alert('Hello ' + this.name + '!')
-        // `event` は、ネイティブ DOM イベントです
-        if (event) {
-          alert(event.target.tagName)
-        }
-        const line = require('@line/bot-sdk');
-        const CHANNEL_ACCESS_TOKEN = 'dXa5yJdRx3EZ5Tc3JsZT1+OEBX0lET3jaGAKGHNhwErxX3rFk3bszscVbOpUNeBU1y8j63rjJwz6/1kq+FbWk2n7jwuAJ9Y5fgN2hVNb6p+kc9HzYxU7WcTOdKxIKEMDEVcNM3/fuHgc24FFZeVTsAdB04t89/1O/w1cDnyilFU=';
-        const USER_ID = 'Ucf04c61e3cff2270f39a6bc24c7d774f';
+      submit: async () => {
+
+        // const line = require('@line/bot-sdk');
+        // const fetch = require('node-fetch');
+        const aws = require('aws-sdk');
+        const core = require('aws-sdk/lib/core');
+
+        const api_id     = process.env.VUE_APP_AWS_API_GATEWAY_ID;
+        const access_key = process.env.VUE_APP_AWS_API_GATEWAY_ACCESS_KEY_ID;
+        const secret_key = process.env.VUE_APP_AWS_API_GATEWAY_SECRET_ACCESS_KEY;
+
+        console.log('process.env.CHANNEL_ACCESS_TOKEN:', process.env.VUE_APP_CHANNEL_ACCESS_TOKEN);
+        console.log('process.env.USER_ID:', process.env.VUE_APP_USER_ID);
+        console.log({api_id});
+        console.log({access_key});
+        console.log({secret_key});
         
-        let client = new line.Client({ channelAccessToken: CHANNEL_ACCESS_TOKEN });
-        let message = {
+        // let client = new line.Client({ channelAccessToken: process.env.VUE_APP_CHANNEL_ACCESS_TOKEN });
+        let data = {
           type: 'text',
           text: 'Hello World!'
         };
 
-        client.pushMessage(USER_ID, message)
-        .then(() => {
-          console.log('OK');
-        })
-        .catch((err) => {
-          console.log('err', err);
-        });
+        const credential = new aws.Credentials(access_key, secret_key);
+        const service_name = "execute-api";
+        const url = `https://${api_id}.execute-api.ap-northeast-1.amazonaws.com/line-bot-contact`;
+        const options = { 
+          url: url, 
+          headers: { host: 'https:', 'Access-Control-Allow-Origin': '*' },
+          pathname: () => '//2fuzug6ire.execute-api.ap-northeast-1.amazonaws.com/line-bot-contact',
+          methodIndex: 'post',
+          search: () => "",
+          region: 'ap-northeast-1',
+          method: 'POST',
+          body: JSON.stringify(data)
+        };
+
+        const now = new Date();
+        const signer = new core.Signers.V4(options, service_name);
+        console.log({signer});
+        signer.addAuthorization(credential, now);
+
+        try {
+          const response = await fetch(url, options);
+          console.log(response);
+        } catch (e) {
+          console.log('ERROR');
+          console.log(e);
+        }
+
+        return;
+
+        // client.pushMessage(process.env.VUE_APP_USER_ID, data)
+        // .then(() => {
+        //   console.log('OK');
+        // })
+        // .catch((err) => {
+        //   console.log('err', err);
+        // });
           
       },
       setSNSLogo: function(logo, index) {
