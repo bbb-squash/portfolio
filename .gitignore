@@ -1,20 +1,20 @@
-.DS_Store
+# tmp
+backup
+
+# common
 node_modules
-/dist
-
-
-# local env files
+jspm_packages
+.DS_Store
 .env
-.env.*.local
 
-
-# Log files
+# client
+client/dist
+## Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
-# Editor directories and files
+## Editor directories and files
 .idea
 .vscode
 *.suo
@@ -22,3 +22,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# server
+.serverless
+server/send_message_to_line_bot/config/*
+server/bearer_authentication/config/*
+!.gitkeep

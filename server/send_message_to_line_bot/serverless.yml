@@ -1,0 +1,20 @@
+service: bearer_authentication
+frameworkVersion: '3'
+
+provider:
+    name: aws
+    runtime: nodejs14.x
+    memorySize: 128
+    timeout: 30
+    region: ap-northeast-1
+    iam: ${file(./config/iam.yml)}
+    deploymentBucket:
+        name: bbbsquash-cloud.com
+    stackTags:
+        COMMIT_ID: ${file(../utils/scripts/git.js):getCommitId}
+
+functions:
+  handler:
+    handler: index.handler
+    name: ${self:service}
+    environment: ${file(./config/environment.yml)}

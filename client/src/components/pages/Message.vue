@@ -9,7 +9,7 @@
         <div class="pt-3 text-center">
           <p class="contact-text">ここまで読んでいただき、誠にありがとうございました。</p>
           <p class="contact-text">もし私にご興味を持たれた方がいらっしゃいましたら、下のフォームからメッセージいただけると嬉しいです。</p>
-          <p class="contact-text">まずは<strong>「bbb.worksquash@gmail.com」</strong>より、自動返信いたします。</p>
+          <p class="contact-text">後日、<strong>「bbb.worksquash@gmail.com」</strong>より、ご連絡いたします。</p>
           <p class="contact-text">ちなみに、メールに気がつかないことがないよう、LINEボットに通知が飛ぶように設定しているようですヨ。</p>
         </div>
         <div class="text-center">
@@ -30,15 +30,15 @@
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field label="お名前" required outlined></v-text-field>
+                  <v-text-field v-model="form_name" label="お名前" required outlined></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="email" required outlined></v-text-field>
+                  <v-text-field v-model="form_email" label="email" required outlined></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-textarea label="お問合せ内容" required outlined></v-textarea>
+                  <v-textarea v-model="form_content" label="お問合せ内容" required outlined></v-textarea>
                 </v-col>
               </v-row>
               <v-row class="justify-center">
@@ -56,70 +56,37 @@
 <script>
   export default {
     name: 'Message',
-    data: () => ({
-      sns_logos: ['qiita-logo.png', 'wantedly-logo.png']
-    }),
+    data: function() { 
+      return {
+        sns_logos: ['qiita-logo.png', 'wantedly-logo.png'],
+        form_name: '',
+        form_email: '',
+        form_content: '',
+      }
+    },
     methods: {
-      submit: async () => {
-
-        // const line = require('@line/bot-sdk');
-        // const fetch = require('node-fetch');
-        const aws = require('aws-sdk');
-        const core = require('aws-sdk/lib/core');
-
-        const api_id     = process.env.VUE_APP_AWS_API_GATEWAY_ID;
-        const access_key = process.env.VUE_APP_AWS_API_GATEWAY_ACCESS_KEY_ID;
-        const secret_key = process.env.VUE_APP_AWS_API_GATEWAY_SECRET_ACCESS_KEY;
-
-        console.log('process.env.CHANNEL_ACCESS_TOKEN:', process.env.VUE_APP_CHANNEL_ACCESS_TOKEN);
-        console.log('process.env.USER_ID:', process.env.VUE_APP_USER_ID);
-        console.log({api_id});
-        console.log({access_key});
-        console.log({secret_key});
-        
-        // let client = new line.Client({ channelAccessToken: process.env.VUE_APP_CHANNEL_ACCESS_TOKEN });
-        let data = {
-          type: 'text',
-          text: 'Hello World!'
+      submit: async function(){
+        const body = {
+          name: this.form_name, 
+          email: this.form_email, 
+          content: this.form_content, 
         };
-
-        const credential = new aws.Credentials(access_key, secret_key);
-        const service_name = "execute-api";
-        const url = `https://${api_id}.execute-api.ap-northeast-1.amazonaws.com/line-bot-contact`;
         const options = { 
-          url: url, 
-          headers: { host: 'https:', 'Access-Control-Allow-Origin': '*' },
-          pathname: () => '//2fuzug6ire.execute-api.ap-northeast-1.amazonaws.com/line-bot-contact',
-          methodIndex: 'post',
-          search: () => "",
-          region: 'ap-northeast-1',
           method: 'POST',
-          body: JSON.stringify(data)
+          // TODO: トークンを作成して埋める
+          headers: { Authorization: 'beaer token' },
+          body: JSON.stringify(body)
         };
-
-        const now = new Date();
-        const signer = new core.Signers.V4(options, service_name);
-        console.log({signer});
-        signer.addAuthorization(credential, now);
-
-        try {
-          const response = await fetch(url, options);
-          console.log(response);
-        } catch (e) {
-          console.log('ERROR');
-          console.log(e);
+        const response = await fetch(process.env.VUE_APP_API_ENDPOINT, options);
+        if (response.status == 200) {
+          // TODO: サクセスメッセージを表示
+        } else {
+          // TODO: エラーメッセージを表示
         }
-
+        this.form_name = '';
+        this.form_email = '';
+        this.form_content = '';
         return;
-
-        // client.pushMessage(process.env.VUE_APP_USER_ID, data)
-        // .then(() => {
-        //   console.log('OK');
-        // })
-        // .catch((err) => {
-        //   console.log('err', err);
-        // });
-          
       },
       setSNSLogo: function(logo, index) {
         let margin_left = ((index+1) % 2 == 0 )? '5%' : '0';
