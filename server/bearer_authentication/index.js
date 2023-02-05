@@ -13,11 +13,9 @@ module.exports.handler = async (event) => {
     // const options = { algorithm: process.env.JWT_ALGORITHM };
     // const token = jwt.sign(payload, secret_key, options);
 
-    const bearer_token = authorization.Bearer;
-    const authorization = event.headers.authorization;
-    
+    const token = event.headers.authorization;
     const public_key = fs.readFileSync(PUBLIC_KEY_PATH, 'utf-8');
-    const payload = jwt.verify(bearer_token, public_key);
+    const payload = jwt.verify(token, public_key);
 
     const iam_policy = {
         "principalId": "bearer_authentication",
