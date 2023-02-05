@@ -1,4 +1,4 @@
-service: bearer_authentication
+service: send-message-to-line-bot
 frameworkVersion: '3'
 
 provider:
@@ -7,14 +7,18 @@ provider:
     memorySize: 128
     timeout: 30
     region: ap-northeast-1
+    stage: ${opt:stage, self:custom.defaultStage}
     iam: ${file(./config/iam.yml)}
     deploymentBucket:
-        name: bbbsquash-cloud.com
+      name: bbbsquash-cloud.com
     stackTags:
-        COMMIT_ID: ${file(../utils/scripts/git.js):getCommitId}
+      COMMIT_ID: ${file(../utils/git.js):getCommitId}
+
+custom:
+  defaultStage: prd
 
 functions:
   handler:
     handler: index.handler
-    name: ${self:service}
+    name: ${sls:stage}-${self:service}
     environment: ${file(./config/environment.yml)}
