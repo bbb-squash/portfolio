@@ -30,6 +30,9 @@
               </v-row>
               <v-row>
                 <v-col cols="12">
+                  <p  class="contact-text">ちなみに、メールに気がつかないことがないよう、LINEボットに通知が飛ぶように設定しているようですヨ。</p>
+                </v-col>
+                <v-col cols="12">
                   <v-text-field v-model="form_name" label="お名前" required outlined></v-text-field>
                 </v-col>
                 <v-col cols="12">
@@ -71,13 +74,14 @@
           email: this.form_email, 
           content: this.form_content, 
         };
-        const options = { 
+        const options = {
           method: 'POST',
-          // TODO: トークンを作成して埋める
-          headers: { Authorization: 'beaer token' },
+          headers: { Authorization: `Bearer ${process.env.VUE_APP_API_BEARER_TOKEN}` },
           body: JSON.stringify(body)
         };
-        const response = await fetch(process.env.VUE_APP_API_ENDPOINT, options);
+        // const response = await fetch(process.env.VUE_APP_API_ENDPOINT, options);
+        const response = { status: 200, options: options };
+        // const response = { status: 400 };
         if (response.status == 200) {
           // TODO: サクセスメッセージを表示
         } else {
