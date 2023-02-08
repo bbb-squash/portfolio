@@ -3,9 +3,10 @@
     <!-- #004e65 -->
     <v-app-bar
     app
+    dense
     color="#fff"
     white
-    dense
+    class="elevation-0 flex-grow-0"
     >
       <v-container class="d-flex align-center">
         
@@ -28,8 +29,13 @@
           <div class="header-content" v-for="content in contents" :key="content.name">
             <router-link :to="{name: content.path_name}">
                 <span class="mr-5 link-text">
-                  <v-icon>{{ content.icon }}</v-icon>
+                  <!-- <v-icon
+                    color="#044c64"
+                  >
+                    {{ content.icon }}
+                  </v-icon> -->
                   {{ content.name }}
+                  <!-- <strong>{{ content.name }}</strong> -->
                 </span>
             </router-link>
           </div>
@@ -51,9 +57,9 @@
             <template v-for="content in contents">
               <router-link :key="content.name" :to="{name: content.path_name}" class="router-link-class">
                 <v-list-item>
-                  <v-list-item-avatar>
+                  <!-- <v-list-item-avatar>
                     <v-icon>{{ content.icon }}</v-icon>
-                  </v-list-item-avatar>
+                  </v-list-item-avatar> -->
                   <v-list-item-content>
                     <v-list-item-title>{{ content.name }}</v-list-item-title>
                   </v-list-item-content>
@@ -93,7 +99,8 @@
   .link-text{
     display: inline-block;
     position: relative;
-    color: #044c64;
+    /* color: #044c64; */
+    color: black;
     text-decoration: none;
   }
   .link-text:before{
@@ -114,6 +121,10 @@
 
   .router-link-class {
     text-decoration: none;
+  }
+
+  .v-btn__content {
+    display: flex !important;
   }
 
 </style>
