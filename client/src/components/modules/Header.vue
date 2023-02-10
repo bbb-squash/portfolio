@@ -19,7 +19,7 @@
           target="_blank"
           text
           >
-            <span class="mr-2">BBB-SQUASH</span>
+            <span>BBB-SQUASH</span>
           </v-btn>
         </div>
 
@@ -29,13 +29,7 @@
           <div class="header-content" v-for="content in contents" :key="content.name">
             <router-link :to="{name: content.path_name}">
                 <span class="mr-5 link-text">
-                  <!-- <v-icon
-                    color="#044c64"
-                  >
-                    {{ content.icon }}
-                  </v-icon> -->
                   {{ content.name }}
-                  <!-- <strong>{{ content.name }}</strong> -->
                 </span>
             </router-link>
           </div>
@@ -47,19 +41,34 @@
     <v-container>
       <v-navigation-drawer 
         v-model="mydrawer"
-        color="#004e65" 
         absolute
         temporary
-        dark
-      >
+        >
         <v-list>
-          <v-list-item-group >
-            <template v-for="content in contents">
-              <router-link :key="content.name" :to="{name: content.path_name}" class="router-link-class">
+          <v-list-item link>
+            <v-list-item-avatar tile>
+              <v-img 
+                src="@/assets/img/top_logo.png"
+                max-height="30"
+                max-width="30"
+              ></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="text-h6">
+                BBB-SQUASH
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item-group
+            v-model="selectedItem"
+            mandatory>
+            <template v-for="(content, id) in contents">
+              <router-link 
+                :key="id" 
+                :to="{name: content.path_name}" 
+                class="router-link-class">
                 <v-list-item>
-                  <!-- <v-list-item-avatar>
-                    <v-icon>{{ content.icon }}</v-icon>
-                  </v-list-item-avatar> -->
                   <v-list-item-content>
                     <v-list-item-title>{{ content.name }}</v-list-item-title>
                   </v-list-item-content>
@@ -83,6 +92,7 @@
         mydrawer: false,
         mygroup: null,
         header_full_draw_width: 650,
+        selectedItem: 1,
       }
     },
 
