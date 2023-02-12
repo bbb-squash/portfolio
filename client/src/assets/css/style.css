@@ -1,4 +1,36 @@
-* {
-    font-family: YuGothic, "游ゴシック Medium", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif !important;
-    /* font-family: "Noto Sans JP",sans-serif !important; */
+
+
+/* .message-contact {
+    display: flex;
+    align-items: center;
+}
+
+.message_contact-text {
+    width: 50%;
+}
+
+.message_contact-form {
+    width: 50%;
+} */
+
+.common_sub-header::before {
+    content: "";
+    border-left: 4px solid var(--v-accent-base);
+    padding-right: 15px;
+}
+
+/* contact */
+.contact_post-link::before, .post-link:active {
+    background-color: transparent !important;
+}
+
+.contact_post-link {
+display: inline-block;
+word-break: break-all;
+padding: 2px 8px;
+border-radius: 5px;
+text-transform: none !important;
+white-space: normal;
+max-width: calc(100% - 30px);
+height: inherit !important;
 }

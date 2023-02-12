@@ -266,12 +266,12 @@ export default {
   color: white;
 }
 
-.v-application .text-h5 {
+/* .v-application .text-h5 {
   font-family: cursive !important;
 }
 .v-application .text-body-1 {
   font-family: cursive !important;
-} 
+}  */
 
 .v-card-text {
   padding: 5px 16px 0px 16px;

@@ -1,11 +1,9 @@
 <template>
   <section id="top">
-    <main class="content">
-
   <!-- split -->
   <div class="split">
     <div class="split-body">
-      <p class="split-title">BBB-<br>SQUASH</p>
+      <p class="split-title main--text">BBB-<br>SQUASH</p>
       <p class="split-text">
         都内でソフトウェアエンジニアをしています。<br>
         本読んだり、フットサルや散歩して体動かすことが好きです。<br>
@@ -128,6 +126,5 @@
   <div class="page-top" id="js-page-top">
     <span class="material-icons-outlined">expand_less</span>
   </div>
-  </main>
   </section>
 </template>

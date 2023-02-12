@@ -91,12 +91,12 @@
     display: block;
   }
 
-  .v-btn__content {
+  /* .v-btn__content {
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 8px 8px 0 0 !important;
-  }
+  } */
 
   .dialog-header {
     height: 10%;

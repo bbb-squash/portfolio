@@ -66,19 +66,18 @@
           v-model="selectedItem"
           mandatory
         >
-          <template v-for="(content, id) in contents">
-            <router-link 
-              :key="id" 
-              :to="{name: content.path_name}" 
-              class="text-decolation-none"
-            >
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title class="font-accent--text font-weight-medium">{{ content.name }}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </router-link>
-          </template>
+          <router-link
+            v-for="(content, index) in contents" 
+            :key="index" 
+            :to="{name: content.path_name}" 
+            class="text-decolation-none"
+          >
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title class="font-accent--text font-weight-medium">{{ content.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </router-link>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

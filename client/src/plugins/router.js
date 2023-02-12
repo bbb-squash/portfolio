@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Top from '@/components/pages/Top.vue';
 import AboutMe from '@/components/pages/AboutMe.vue';
 import Work from '@/components/pages/Work.vue';
-import Message from '@/components/pages/Message.vue';
+import Contact from '@/components/pages/Contact.vue';
 
 Vue.use(VueRouter);
 
@@ -11,7 +11,7 @@ const routes = [
     { path: '/', component: Top, name: 'top' },
     { path: '/about', component: AboutMe, name: 'about' },
     { path: '/work', component: Work, name: 'work' },
-    { path: '/message', component: Message, name: 'message' },
+    { path: '/contact', component: Contact, name: 'contact' },
 ];
 
 const router = new VueRouter({
