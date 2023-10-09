@@ -15,7 +15,9 @@ export default new Vuetify({
         'font-accent': "#044c64",
         'main': "#044c64",
         'sub': '#48B0C7',
-        'accent': '#D96738'
+        'accent': '#D96738',
+        'accent-dark': '#B58794',
+        'txt-light': '#666'
       }
     },
     options: { customProperties: true },

@@ -191,7 +191,6 @@ export default {
 
 .profile-card {
   height: 100%;
-  font-family: cursive;
   text-align: center;
   font-size: 0px;
   /* max-height: 650px; */
@@ -266,13 +265,6 @@ export default {
   color: white;
 }
 
-/* .v-application .text-h5 {
-  font-family: cursive !important;
-}
-.v-application .text-body-1 {
-  font-family: cursive !important;
-}  */
-
 .v-card-text {
   padding: 5px 16px 0px 16px;
 }
@@ -280,11 +272,6 @@ export default {
 .card-title {
   padding: 10px;
 }
-
-.profile-italic {
-  font-family: cursive !important;
-}
-
 
 .introduction-card-text {
   padding: 7px 20px 0px 20px;

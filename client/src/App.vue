@@ -36,18 +36,24 @@ export default {
 </script>
 
 <style>
+  /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@500&display=swap'); */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=PT+Sans:wght@700&family=Roboto:wght@500&display=swap');
   #app {
-    font-family: "Montserrat","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    letter-spacing: .8px;
-    /* color: #333; */
-    /* color: var(--v-font-accent-base); */
+    /* font-family: 'PT Sans', 'Noto Sans JP', sans-serif; */
+    font-family: "BIZ UDPGothic", "Meiryo UI", Meiryo, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    /* line-height: 1.8; */
+    /* letter-spacing: .8px; */
+  }
+
+  .page-title {
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    letter-spacing: 0.0073529412em;
   }
   .main-contents {
-    /* background-color: white; */
     padding-top: 30px;
-    /* max-width: 1903px; */
     min-height: 100%;
   }
   .content-text {

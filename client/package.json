@@ -10,11 +10,14 @@
   "dependencies": {
     "@aws-crypto/sha256-js": "^3.0.0",
     "@aws-sdk/signature-v4": "^3.226.0",
+    "@jamescoyle/vue-icon": "^0.1.2",
     "@line/bot-sdk": "^7.4.0",
+    "@mdi/js": "^7.2.96",
     "aws-sdk": "^2.1290.0",
     "axios": "^1.0.0",
     "buffer": "^6.0.3",
     "core-js": "^3.6.5",
+    "google-fonts-webpack-plugin": "^0.4.4",
     "http": "0.0.1-security",
     "https": "^1.0.0",
     "net": "^1.0.2",
@@ -39,6 +42,7 @@
     "sass-loader": "^10.0.0",
     "vue-cli-plugin-vuetify": "~2.4.5",
     "vue-router": "^3.5.3",
+    "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.7.0"
   },

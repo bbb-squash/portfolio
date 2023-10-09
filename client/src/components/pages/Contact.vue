@@ -1,9 +1,10 @@
 <template>
   <section id="contact">
     <v-container>
-    <v-row no-gutters class="justify-center mb-10">
-      <h1 class="text-h5 font-weight-bold text-center main--text">Contact</h1>
+    <v-row no-gutters class="justify-center mb-6">
+      <h1 class="page-title font-weight-bold text-center main--text">Contact</h1>
     </v-row>
+    <v-divider></v-divider>
     <v-row no-gutters max-width="1200">
       <v-col 
         no-gutters
@@ -14,7 +15,7 @@
       >
         <div class="text-center mb-5">
           <h2 
-            class="text-h6 font-weight-medium text-left px-10 py-2 white--text common_sub-header rounded"
+            class="font-weight-medium text-left px-10 py-1 white--text text-h6 common_sub-header rounded"
             :style="{background: $vuetify.theme.themes.light.main }">
             Message
           </h2>
@@ -22,28 +23,28 @@
         <p class="text-left pl-3">
           ここまで読んでいただき、誠にありがとうございました。<br />
           もし私にご興味を持たれた方がいらっしゃいましたら、フォームからメッセージいただけると嬉しいです。<br />
-          後日、<strong class="main--text"> bbb.worksquash@gmail.com </strong>より、ご連絡いたします。<br />
+          後日、メールにてご連絡いたします。<br />
         </p>
+        <p class="main--text font-weight-medium"><span class="message-baddie mr-3 font-weight-bold">メールアドレス</span>bbb.worksquash@gmail.com</p>
         <div 
           class="text-center"
-          :class="{ 'mt-5': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm, 'mt-10': $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }">
+          :class="{ 'mt-5': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm, 'mt-10': $vuetify.breakpoint.lgAndUp }">
           <h2 
-            class="text-h6 font-weight-medium text-left px-10 py-2 white--text common_sub-header rounded mb-5"
+            class="font-weight-medium text-left px-10 py-1 white--text text-h6 common_sub-header rounded mb-5"
             :style="{background: $vuetify.theme.themes.light.main }">
             SNS
           </h2>
           <p class="pl-3 text-left">SNSも少しだけやってますのでフォローいただけると嬉しいです。</p>
-          <div class="justify-content mb-3">
-            <v-btn
-              v-for="(logo, index) in sns_logos"
-              :key="index"
-              :href="logo.url"
-              color="link"
-              min-height="20"
-              text
-              class="x-small contact_post-link align-center py-1 px-2">
-              <i :key="index" :style="setSNSLogo(logo.img, index)"></i>
-            </v-btn>
+          <div class="contact-sns-area clearfix">
+          <div class='d-flex justify-center'>
+            <div 
+              class="sns-icon"
+              v-for="(sns, index) in sns_link" :key="index">
+              <a :href="sns.link" target="_blank">
+                <component :is="sns.icon"/>
+              </a>
+            </div>
+          </div>
           </div>
         </div>
       </v-col>
@@ -51,20 +52,18 @@
         no-gutters
         cols="12"
         sm="12" 
-        md="7"
-      >
+        md="7">
         <v-card 
           elevation="2" 
           outlined 
           :loading="card.isLoading"
-          class="mx-2 my-5 pa-5"
-        >
+          class="mx-2 my-5 px-5">
           <v-form fast-fail @submit.prevent ref="form">
             <v-container>
-              <v-card-title class="text-h6 font-weight-bold">
+              <v-card-title class="font-weight-bold">
                 <span class="common_sub-header main--text">お問い合わせフォーム</span>
               </v-card-title>
-              <v-card-text v-html="card.message.html" />
+              <p class="txt-light--text">{{ card.message.html }}</p>
               <v-row no-gutters class="justify-center">
                 <v-col no-gutters cols="12">
                   <v-text-field 
@@ -95,7 +94,11 @@
                     :rules="formInput.content.rules"
                     :disabled="formDisabled" />
                 </v-col>
-                <v-col no-gutters cols="6" sm="4">
+                <v-col 
+                  no-gutters 
+                  class="d-flex justify-center align-center"
+                  cols="6" 
+                  sm="4">
                   <v-btn 
                     type="submit"
                     class="elevation-0 mx-auto white--text py-3 px-6"
@@ -127,9 +130,20 @@
   </section>
 </template>
 <script>
+  import LogoZenn from '@/assets/img/zenn.svg';
+  import LogoWantedly from '@/assets/img/wantedly.svg';
+  import LogoTwitter from '@/assets/img/twitter.svg';
+  import LogoGitHub from '@/assets/img/github.svg';
   import conf from '@/config/ContactForm';
+
   export default {
     name: 'Contact',
+    components: {
+      LogoZenn: LogoZenn,
+      LogoWantedly: LogoWantedly,
+      LogoTwitter: LogoTwitter,
+      LogoGitHub: LogoGitHub,
+    },
     data: function() { 
       return {
         valid: true,
@@ -153,7 +167,7 @@
             text: '',
             rules: [ 
               value => value ? true : conf.validation.blank,
-              value => value.match(/.+@.+/) ? true : conf.validation.email,
+              value => value && value.match(/.+@.+/) ? true : conf.validation.email,
             ]
           },
           content: {
@@ -173,7 +187,29 @@
           cancelButton: {
             isShow: false,
           },
-        }
+        },
+        sns_link: [
+          {
+            link: 'https://github.com/Mitsuya-bbb',
+            icon: LogoGitHub,
+            isShow: true
+          },
+          {
+            link: 'https://twitter.com/bbb__squash',
+            icon: LogoTwitter,
+            isShow: true
+          },
+          {
+            link: 'https://www.wantedly.com/id',
+            icon: LogoWantedly,
+            isShow: true
+          },
+          {
+            link: 'https://zenn.dev/bbb_squash',
+            icon: LogoZenn,
+            isShow: true
+          },
+        ]
       }
     },
     methods: {
@@ -181,11 +217,18 @@
         if (this.card.button.type == conf.type.init) {
           const valid = await this.$refs.form.validate();
           if (!valid) return;
-          this.card.button.type  = conf.type.confirm;
-          this.card.button.text  = conf.button[this.card.button.type];
-          this.card.message.html = conf.message[this.card.button.type];
+          this.card = {
+            ...this.card,
+            button: {
+              type: conf.type.confirm,
+              text: conf.button[this.card.button.type]
+            },
+            message: {
+              html: conf.message[this.card.button.type]
+            },
+            cancelButton:{ isShow: true }
+          };
           this.formDisabled = true;
-          this.card.cancelButton.isShow = true;
         } else if (this.card.button.type == conf.type.confirm)  {
           this.card.isLoading = true;
           const body = {
@@ -199,8 +242,6 @@
             body: JSON.stringify(body)
           };
           const response = await fetch(process.env.VUE_APP_API_ENDPOINT, options);
-          // const response = { status: 200, options: options };
-          // const response = { status: 400, options: options };
           if (response.status == 200) {
             this.card.message.html = conf.message.complete;
             this.formDisabled = false;
@@ -209,26 +250,28 @@
             this.card.message.html = conf.message.error;
             this.formDisabled = false;
           }
-          this.card.isLoading = false;
-          this.card.button.type = conf.type.init;
-          this.card.button.text = conf.button.init;
-          this.card.cancelButton.isShow = false;
+          this.initField();
         } else {
-          this.card.isLoading = false;
+          this.initField();
           this.formDisabled = false;
           this.$refs.form.reset();
-          this.card.button.type = conf.type.init;
-          this.card.button.text = conf.button.init;
-          this.card.cancelButton.isShow = false;
+        }
+      },
+      initField: function() {
+        this.card = {
+          ...this.card,
+          isLoading: false,
+          button: {
+            type: conf.type.init,
+            text: conf.button.init
+          },
+          cancelButton: { isShow: false }
         }
       },
       cancel: function() {
-        this.card.isLoading = false;
-        this.formDisabled = false;
+        this.initField();
         this.card.message.html = conf.message.init;
-        this.card.button.type = conf.type.init;
-        this.card.button.text = conf.button.init;
-        this.card.cancelButton.isShow = false;
+        this.formDisabled = false;
       },
       setSNSLogo: function(logo, index) {
         let margin_left = ((index+1) % 2 == 0 )? '5%' : '0';
