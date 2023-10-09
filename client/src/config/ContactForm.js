@@ -13,7 +13,7 @@ export default {
   },
   button: {
     init: '確認',
-    confirm: '送信',
+    confirm: '送信'
   },
   validation: {
     blank: 'この項目は入力必須項目です',

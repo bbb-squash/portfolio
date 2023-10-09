@@ -21,25 +21,31 @@
 
 
 <script>
-  import AboutMe from '@/components/pages/AboutMe';
-  import Work from '@/components/pages/Work';
-  import Contact from '@/components/pages/Contact';
-  export default {
-    name: 'App',
+import AboutMe from '@/components/pages/AboutMe';
+import Work from '@/components/pages/Work';
+import Contact from '@/components/pages/Contact';
+export default {
+  name: 'App',
 
-    components: {
-      'AboutMe': AboutMe,
-      'Work': Work,
-      'Contact': Contact
+  components: {
+    'AboutMe': AboutMe,
+    'Work': Work,
+    'Contact': Contact
+  },
+
+  data: () => ({ contents: [
+    {
+      name: 'Home', icon: 'mdi-home', pathName: 'top' 
     },
-
-    data: () => ({
-      contents: [
-        {name: 'Home', icon: 'mdi-home', path_name: 'top' },
-        {name: 'About Me', icon: 'mdi-human-handsup', path_name: 'about' },
-        {name: 'Work', icon: 'mdi-tools', path_name: 'work' },
-        {name: 'Contact', icon: 'mdi-pin', path_name: 'contact' }
-      ],
-    })
-  }
+    {
+      name: 'About Me', icon: 'mdi-human-handsup', pathName: 'about' 
+    },
+    {
+      name: 'Work', icon: 'mdi-tools', pathName: 'work' 
+    },
+    {
+      name: 'Contact', icon: 'mdi-pin', pathName: 'contact' 
+    }
+  ] })
+}
 </script>

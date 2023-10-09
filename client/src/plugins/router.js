@@ -8,15 +8,23 @@ import Contact from '@/components/pages/Contact.vue';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: Top, name: 'top' },
-    { path: '/about', component: AboutMe, name: 'about' },
-    { path: '/work', component: Work, name: 'work' },
-    { path: '/contact', component: Contact, name: 'contact' },
+  {
+    path: '/', component: Top, name: 'top' 
+  },
+  {
+    path: '/about', component: AboutMe, name: 'about' 
+  },
+  {
+    path: '/work', component: Work, name: 'work' 
+  },
+  {
+    path: '/contact', component: Contact, name: 'contact' 
+  }
 ];
 
 const router = new VueRouter({
-    routes,
-    mode: 'history'
+  routes,
+  mode: 'history'
 });
 
 export default router;

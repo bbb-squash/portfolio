@@ -17,8 +17,8 @@
         <!-- 画面サイズがbreakpoint.xs以下であれば、navアイコンを表示 -->
         <v-app-bar-nav-icon
           v-if="$vuetify.breakpoint.xs" 
-          @click="mydrawer = !mydrawer"
           class="font-accent--text"
+          @click="mydrawer = !mydrawer"
         />
 
         <v-toolbar-title class="text-h6 font-accent--text">BBB-SQUASH</v-toolbar-title>
@@ -39,10 +39,6 @@
       </v-toolbar>
     </v-app-bar>
 
-    <!-- navアイコンクリック時の内容 -->
-    <!-- <NavigationDrawer 
-      :contents="contents"
-      :mydrawer="mydrawer" /> -->
     <v-navigation-drawer 
       v-model="mydrawer"
       temporary
@@ -85,29 +81,22 @@
 </template>
 
 <script>
-  // import NavigationDrawer from '@/components/modules/NavigationDrawer';
-  export default {
-    name: 'Header',
+export default {
+  name: 'Header',
+  props: { contents: {
+    type: Array,
+    required: true
+  } },
 
-    components: {
-      // 'NavigationDrawer': NavigationDrawer
-    },
-
-    data() {
-      return {
-        mydrawer: false,
-        mygroup: null,
-        header_full_draw_width: 650,
-        selectedItem: 1,
-      }
-    },
-
-    props: {
-      contents: {
-        type: Array,
-      }
-    },
+  data() {
+    return {
+      mydrawer: false,
+      mygroup: null,
+      headerFullDrawWidth: 650,
+      selectedItem: 1
+    }
   }
+}
 </script>
 
 <style scoped>

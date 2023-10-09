@@ -38,8 +38,8 @@
           <div class="contact-sns-area clearfix">
           <div class='d-flex justify-center'>
             <div 
-              class="sns-icon"
-              v-for="(sns, index) in sns_link" :key="index">
+              v-for="(sns, index) in snsLink"
+              :key="index" class="sns-icon">
               <a :href="sns.link" target="_blank">
                 <component :is="sns.icon"/>
               </a>
@@ -58,7 +58,7 @@
           outlined 
           :loading="card.isLoading"
           class="mx-2 my-5 px-5">
-          <v-form fast-fail @submit.prevent ref="form">
+          <v-form ref="form" fast-fail @submit.prevent>
             <v-container>
               <v-card-title class="font-weight-bold">
                 <span class="common_sub-header main--text">お問い合わせフォーム</span>
@@ -130,161 +130,155 @@
   </section>
 </template>
 <script>
-  import LogoZenn from '@/assets/img/zenn.svg';
-  import LogoWantedly from '@/assets/img/wantedly.svg';
-  import LogoTwitter from '@/assets/img/twitter.svg';
-  import LogoGitHub from '@/assets/img/github.svg';
-  import conf from '@/config/ContactForm';
+import LogoZenn from '@/assets/img/zenn.svg';
+import LogoWantedly from '@/assets/img/wantedly.svg';
+import LogoTwitter from '@/assets/img/twitter.svg';
+import LogoGitHub from '@/assets/img/github.svg';
+import conf from '@/config/ContactForm';
 
-  export default {
-    name: 'Contact',
-    components: {
-      LogoZenn: LogoZenn,
-      LogoWantedly: LogoWantedly,
-      LogoTwitter: LogoTwitter,
-      LogoGitHub: LogoGitHub,
-    },
-    data: function() { 
-      return {
-        valid: true,
-        sns_logos: [
-          {
-            url: 'https://qiita.com/bbb-squash',
-            img: 'qiita-logo.png'
-          },
-          {
-            url: '',
-            img: 'wantedly-logo.png'
-          },
-        ],
-        formDisabled: false, 
-        formInput: {
-          name: {
-            text: '',
-            rules: [ value => { return value ? true : conf.validation.blank }]
-          },
-          email: {
-            text: '',
-            rules: [ 
-              value => value ? true : conf.validation.blank,
-              value => value && value.match(/.+@.+/) ? true : conf.validation.email,
-            ]
-          },
-          content: {
-            text: '',
-            rules: [ value => { return value ? true : conf.validation.blank }]
-          },
+export default {
+  name: 'Contact',
+  components: {
+    LogoZenn: LogoZenn,
+    LogoWantedly: LogoWantedly,
+    LogoTwitter: LogoTwitter,
+    LogoGitHub: LogoGitHub
+  },
+  data: function() { 
+    return {
+      valid: true,
+      snsLogos: [
+        {
+          url: 'https://qiita.com/bbb-squash',
+          img: 'qiita-logo.png'
         },
-        card: {
-          isLoading: false,
-          message: {
-            html: conf.message.init,
-          },
-          button: {
-            type: conf.type.init,
-            text: conf.button.init,
-          },
-          cancelButton: {
-            isShow: false,
-          },
+        {
+          url: '',
+          img: 'wantedly-logo.png'
+        }
+      ],
+      formDisabled: false, 
+      formInput: {
+        name: {
+          text: '',
+          rules: [ value => { return value ? true : conf.validation.blank }]
         },
-        sns_link: [
-          {
-            link: 'https://github.com/Mitsuya-bbb',
-            icon: LogoGitHub,
-            isShow: true
-          },
-          {
-            link: 'https://twitter.com/bbb__squash',
-            icon: LogoTwitter,
-            isShow: true
-          },
-          {
-            link: 'https://www.wantedly.com/id',
-            icon: LogoWantedly,
-            isShow: true
-          },
-          {
-            link: 'https://zenn.dev/bbb_squash',
-            icon: LogoZenn,
-            isShow: true
-          },
-        ]
-      }
-    },
-    methods: {
-      submit: async function() {
-        if (this.card.button.type == conf.type.init) {
-          const valid = await this.$refs.form.validate();
-          if (!valid) return;
-          this.card = {
-            ...this.card,
-            button: {
-              type: conf.type.confirm,
-              text: conf.button[this.card.button.type]
-            },
-            message: {
-              html: conf.message[this.card.button.type]
-            },
-            cancelButton:{ isShow: true }
-          };
-          this.formDisabled = true;
-        } else if (this.card.button.type == conf.type.confirm)  {
-          this.card.isLoading = true;
-          const body = {
-            name: this.formInput.name.text, 
-            email: this.formInput.email.text, 
-            content: this.formInput.content.text, 
-          };
-          const options = {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${process.env.VUE_APP_API_BEARER_TOKEN}` },
-            body: JSON.stringify(body)
-          };
-          const response = await fetch(process.env.VUE_APP_API_ENDPOINT, options);
-          if (response.status == 200) {
-            this.card.message.html = conf.message.complete;
-            this.formDisabled = false;
-            this.$refs.form.reset();
-          } else {
-            this.card.message.html = conf.message.error;
-            this.formDisabled = false;
-          }
-          this.initField();
-        } else {
-          this.initField();
-          this.formDisabled = false;
-          this.$refs.form.reset();
+        email: {
+          text: '',
+          rules: [ 
+            value => value ? true : conf.validation.blank,
+            value => value && value.match(/.+@.+/) ? true : conf.validation.email
+          ]
+        },
+        content: {
+          text: '',
+          rules: [ value => { return value ? true : conf.validation.blank }]
         }
       },
-      initField: function() {
+      card: {
+        isLoading: false,
+        message: { html: conf.message.init },
+        button: {
+          type: conf.type.init,
+          text: conf.button.init
+        },
+        cancelButton: { isShow: false }
+      },
+      snsLink: [
+        {
+          link: 'https://github.com/Mitsuya-bbb',
+          icon: LogoGitHub,
+          isShow: true
+        },
+        {
+          link: 'https://twitter.com/bbb__squash',
+          icon: LogoTwitter,
+          isShow: true
+        },
+        {
+          link: 'https://www.wantedly.com/id',
+          icon: LogoWantedly,
+          isShow: true
+        },
+        {
+          link: 'https://zenn.dev/bbb_squash',
+          icon: LogoZenn,
+          isShow: true
+        }
+      ]
+    }
+  },
+  methods: {
+    submit: async function() {
+      if (this.card.button.type == conf.type.init) {
+        const valid = await this.$refs.form.validate();
+        if (!valid) return;
         this.card = {
           ...this.card,
-          isLoading: false,
           button: {
-            type: conf.type.init,
-            text: conf.button.init
+            type: conf.type.confirm,
+            text: conf.button[this.card.button.type]
           },
-          cancelButton: { isShow: false }
-        }
-      },
-      cancel: function() {
-        this.initField();
-        this.card.message.html = conf.message.init;
-        this.formDisabled = false;
-      },
-      setSNSLogo: function(logo, index) {
-        let margin_left = ((index+1) % 2 == 0 )? '5%' : '0';
-        return {
-          backgroundImage: 'url(' + require(`@/assets/${logo}`) + ')',
-          width: '50px',
-          height: '50px',
-          backgroundSize: 'contain',
-          backgroundPosition: '50%',
-          marginLeft: margin_left,
-          display: 'inline-block'
+          message: { html: conf.message[this.card.button.type] },
+          cancelButton:{ isShow: true }
         };
-      },
+        this.formDisabled = true;
+      } else if (this.card.button.type == conf.type.confirm)  {
+        this.card.isLoading = true;
+        const body = {
+          name: this.formInput.name.text, 
+          email: this.formInput.email.text, 
+          content: this.formInput.content.text 
+        };
+        const options = {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${process.env.VUE_APP_API_BEARER_TOKEN}` },
+          body: JSON.stringify(body)
+        };
+        const response = await fetch(process.env.VUE_APP_API_ENDPOINT, options);
+        if (response.status == 200) {
+          this.card.message.html = conf.message.complete;
+          this.formDisabled = false;
+          this.$refs.form.reset();
+        } else {
+          this.card.message.html = conf.message.error;
+          this.formDisabled = false;
+        }
+        this.initField();
+      } else {
+        this.initField();
+        this.formDisabled = false;
+        this.$refs.form.reset();
+      }
+    },
+    initField: function() {
+      this.card = {
+        ...this.card,
+        isLoading: false,
+        button: {
+          type: conf.type.init,
+          text: conf.button.init
+        },
+        cancelButton: { isShow: false }
+      }
+    },
+    cancel: function() {
+      this.initField();
+      this.card.message.html = conf.message.init;
+      this.formDisabled = false;
+    },
+    setSNSLogo: function(logo, index) {
+      let marginLeft = ((index+1) % 2 == 0 )? '5%' : '0';
+      return {
+        backgroundImage: 'url(' + require(`@/assets/${logo}`) + ')',
+        width: '50px',
+        height: '50px',
+        backgroundSize: 'contain',
+        backgroundPosition: '50%',
+        marginLeft: marginLeft,
+        display: 'inline-block'
+      };
     }
   }
+}
 </script>

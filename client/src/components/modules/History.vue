@@ -14,7 +14,7 @@
         ></v-divider>
         <v-col cols="9" class="time-object">
           <template v-for="object in history[year]">
-            <div class="pl-5" :key="object.title">
+            <div :key="object.title" class="pl-5">
               <p class="text-h5">{{ object.title }}</p>
               <p class="text-h6">{{ object.introduction }}</p>
             </div>
@@ -28,30 +28,27 @@
 <script>
 export default {
   name: 'History',
-  data: () => ({
-    history: {
-      '2017': [
-        {
-          'title': 'INIAD入学',
-          'introduction': 'コンピュータサイエンスを勉強'
-        }
-      ],
-      '2019': [
-        {
-          'title': '株式会社インフラトップ',
-          'introduction': 'メンター/講師として、受講生のプログラミング学習をサポート'
-        }
-      ],
-      '2021': [
-        {
-          'title': '株式会社チェンジ',
-          'introduction': 'エンジニア/コンサルタントとして、プロジェクト支援・主にバックエンドの実装を担当'
-        }
-      ],
-    }
-  }),
-  computed: {
-  }
+  data: () => ({ history: {
+    '2017': [
+      {
+        'title': 'INIAD入学',
+        'introduction': 'コンピュータサイエンスを勉強'
+      }
+    ],
+    '2019': [
+      {
+        'title': '株式会社インフラトップ',
+        'introduction': 'メンター/講師として、受講生のプログラミング学習をサポート'
+      }
+    ],
+    '2021': [
+      {
+        'title': '株式会社チェンジ',
+        'introduction': 'エンジニア/コンサルタントとして、プロジェクト支援・主にバックエンドの実装を担当'
+      }
+    ]
+  } }),
+  computed: {}
 };
 </script>
 

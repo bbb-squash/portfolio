@@ -24,14 +24,20 @@ export default {
     'v-footer': Footer
   },
 
-  data: () => ({
-    contents: [
-      {name: 'Home', icon: 'mdi-home', path_name: 'top' },
-      {name: 'About Me', icon: 'mdi-human-handsup', path_name: 'about' },
-      {name: 'Work', icon: 'mdi-tools', path_name: 'work' },
-      {name: 'Contact', icon: 'mdi-pin', path_name: 'contact' }
-    ],
-  })
+  data: () => ({ contents: [
+    {
+      name: 'Home', icon: 'mdi-home', pathName: 'top' 
+    },
+    {
+      name: 'About Me', icon: 'mdi-human-handsup', pathName: 'about' 
+    },
+    {
+      name: 'Work', icon: 'mdi-tools', pathName: 'work' 
+    },
+    {
+      name: 'Contact', icon: 'mdi-pin', pathName: 'contact' 
+    }
+  ] })
 };
 </script>
 
