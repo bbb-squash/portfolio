@@ -1,70 +1,69 @@
 <template>
-  <v-app class="app-background-color" :style="style">
-    <v-header :contents="contents"></v-header>
-    <v-main class="v-main-container">
-      <!-- <v-container class="main-contents"> -->
+  <v-app>
+    <v-header :contents="contents" />
+    <v-main>
       <v-container 
         fluid
-        pa-0>
-        <router-view></router-view>
+        pa-0
+      >
+        <router-view />
       </v-container>
     </v-main>
+    <v-footer :contents="contents" />
   </v-app>
 </template>
 
 <script>
 import Header from '@/components/modules/Header';
+import Footer from '@/components/modules/Footer';
 
 export default {
   name: 'App',
 
   components: {
-    'v-header': Header
+    'v-header': Header,
+    'v-footer': Footer
   },
 
-  data: () => ({
-    contents: [
-      {name: 'Home', icon: 'mdi-home', path_name: 'top' },
-      {name: 'About Me', icon: 'mdi-human-handsup', path_name: 'about' },
-      {name: 'Work', icon: 'mdi-tools', path_name: 'work' },
-      {name: 'Message', icon: 'mdi-pin', path_name: 'message' }
-    ],
-    style: {
-      '--color': 'black',
-      '--accent-color': '#044c64',
-      '--background-color': 'white'
+  data: () => ({ contents: [
+    {
+      name: 'Home', icon: 'mdi-home', pathName: 'top' 
+    },
+    {
+      name: 'About Me', icon: 'mdi-human-handsup', pathName: 'about' 
+    },
+    {
+      name: 'Work', icon: 'mdi-tools', pathName: 'work' 
+    },
+    {
+      name: 'Contact', icon: 'mdi-pin', pathName: 'contact' 
     }
-  })
+  ] })
 };
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=PT+Sans:wght@700&family=Roboto:wght@500&display=swap');
   #app {
-    font-family: "Montserrat","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    letter-spacing: .8px;
-    /* color: #333; */
-    color: var(--accent-color);
+    font-family: "BIZ UDPGothic", "Meiryo UI", Meiryo, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
   }
-  /* .header-divider {
-    width: 15%;
-    margin: 0 auto;
-    border: 1px solid;
-    background-color: #044c64;
-  } */
-  .v-main-container {
-    padding: 25px 0px 0px !important;
-    font-family: "Montserrat","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans", Meiryo, sans-serif;
+  .page-title {
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    letter-spacing: 0.0073529412em;
   }
   .main-contents {
-    /* background-color: white; */
     padding-top: 30px;
-    /* max-width: 1903px; */
     min-height: 100%;
   }
   .content-text {
     font-size: 1.125rem;
+  }
+
+  .font-accent {
+    color: var(--v-font-accent-base);
   }
 
   h1.text-h3 {
