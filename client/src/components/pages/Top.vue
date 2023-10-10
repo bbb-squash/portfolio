@@ -1,21 +1,23 @@
 <template>
   <section id="top">
-  <div class="split">
-    <div class="split-body">
-      <p class="split-title main--text">BBB-<br>SQUASH</p>
-      <p class="split-text">
-        都内でソフトウェアエンジニアをしています。<br>
-        本読んだり、フットサルや散歩して体動かすことが好きです。<br>
-        もっと多くの人に自分を知ってもらいたく作成しました。<br>
-        細々とですが、更新してたりします。
-       </p>
+    <div class="split">
+      <div class="split-body">
+        <p class="split-title main--text">
+          BBB-<br>SQUASH
+        </p>
+        <p class="split-text">
+          都内でソフトウェアエンジニアをしています。<br>
+          本読んだり、フットサルや散歩して体動かすことが好きです。<br>
+          もっと多くの人に自分を知ってもらいたく作成しました。<br>
+          細々とですが、更新してたりします。
+        </p>
+      </div>
+      <div class="split-img" />
     </div>
-    <div class="split-img"></div>
-  </div>
 
-  <AboutMe></AboutMe>
-  <Work></Work>
-  <Contact></Contact>
+    <AboutMe />
+    <Work />
+    <Contact />
   </section>
 </template>
 

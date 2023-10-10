@@ -21,12 +21,17 @@
           @click="mydrawer = !mydrawer"
         />
 
-        <v-toolbar-title class="text-h6 font-accent--text">BBB-SQUASH</v-toolbar-title>
-        <v-spacer></v-spacer>
+        <v-toolbar-title class="text-h6 font-accent--text">
+          BBB-SQUASH
+        </v-toolbar-title>
+        <v-spacer />
       
         <template v-if="!$vuetify.breakpoint.xs">
-          <div v-for="content in contents" :key="content.name">
-            <router-link :to="{name: content.path_name}">
+          <div
+            v-for="content in contents"
+            :key="content.name"
+          >
+            <router-link :to="{ name: content.pathName }">
               <span 
                 class="header_link-text font-weight-medium font-accent--text"
                 :class="{ 'mr-5': $vuetify.breakpoint.sm, 'mr-13': $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"
@@ -48,16 +53,18 @@
         <v-list-item link>
           <v-list-item-avatar tile>
             <v-img 
-              src="@/assets/img/top_logo.png"
+              src="@/assets/img/png/site_top.png"
               max-height="30"
               max-width="30"
             />
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title class="text-h6 font-accent--text">BBB-SQUASH</v-list-item-title>
+            <v-list-item-title class="text-h6 font-accent--text">
+              BBB-SQUASH
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-divider></v-divider>
+        <v-divider />
         <v-list-item-group
           v-model="selectedItem"
           mandatory
@@ -65,12 +72,14 @@
           <router-link
             v-for="(content, index) in contents" 
             :key="index" 
-            :to="{name: content.path_name}" 
+            :to="{ name: content.path_name }" 
             class="text-decolation-none"
           >
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-title class="font-accent--text font-weight-medium">{{ content.name }}</v-list-item-title>
+                <v-list-item-title class="font-accent--text font-weight-medium">
+                  {{ content.name }}
+                </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </router-link>

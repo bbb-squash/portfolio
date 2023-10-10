@@ -1,139 +1,185 @@
 <template>
   <section id="contact">
     <v-container>
-    <v-row no-gutters class="justify-center mb-6">
-      <h1 class="page-title font-weight-bold text-center main--text">Contact</h1>
-    </v-row>
-    <v-divider></v-divider>
-    <v-row no-gutters max-width="1200">
-      <v-col 
+      <v-row
         no-gutters
-        cols="12"
-        sm="12" 
-        md="5"
-        class="pa-8"
+        class="justify-center mb-6"
       >
-        <div class="text-center mb-5">
-          <h2 
-            class="font-weight-medium text-left px-10 py-1 white--text text-h6 common_sub-header rounded"
-            :style="{background: $vuetify.theme.themes.light.main }">
-            Message
-          </h2>
-        </div>
-        <p class="text-left pl-3">
-          ここまで読んでいただき、誠にありがとうございました。<br />
-          もし私にご興味を持たれた方がいらっしゃいましたら、フォームからメッセージいただけると嬉しいです。<br />
-          後日、メールにてご連絡いたします。<br />
-        </p>
-        <p class="main--text font-weight-medium"><span class="message-baddie mr-3 font-weight-bold">メールアドレス</span>bbb.worksquash@gmail.com</p>
-        <div 
-          class="text-center"
-          :class="{ 'mt-5': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm, 'mt-10': $vuetify.breakpoint.lgAndUp }">
-          <h2 
-            class="font-weight-medium text-left px-10 py-1 white--text text-h6 common_sub-header rounded mb-5"
-            :style="{background: $vuetify.theme.themes.light.main }">
-            SNS
-          </h2>
-          <p class="pl-3 text-left">SNSも少しだけやってますのでフォローいただけると嬉しいです。</p>
-          <div class="contact-sns-area clearfix">
-          <div class='d-flex justify-center'>
-            <div 
-              v-for="(sns, index) in snsLink"
-              :key="index" class="sns-icon">
-              <a :href="sns.link" target="_blank">
-                <component :is="sns.icon"/>
-              </a>
+        <h1 class="page-title font-weight-bold text-center main--text">
+          Contact
+        </h1>
+      </v-row>
+      <v-divider />
+      <v-row
+        no-gutters
+        max-width="1200"
+      >
+        <v-col 
+          no-gutters
+          cols="12"
+          sm="12" 
+          md="5"
+          class="pa-8"
+        >
+          <div class="text-center mb-5">
+            <h2 
+              class="font-weight-medium text-left px-10 py-1 white--text text-h6 common_sub-header rounded"
+              :style="{ background: $vuetify.theme.themes.light.main }"
+            >
+              Message
+            </h2>
+          </div>
+          <p class="text-left pl-3">
+            ここまで読んでいただき、誠にありがとうございました。<br>
+            もし私にご興味を持たれた方がいらっしゃいましたら、フォームからメッセージいただけると嬉しいです。<br>
+            後日、メールにてご連絡いたします。<br>
+          </p>
+          <p class="main--text font-weight-medium">
+            <span class="message-baddie mr-3 font-weight-bold">メールアドレス</span>bbb.worksquash@gmail.com
+          </p>
+          <div 
+            class="text-center"
+            :class="{ 'mt-5': $vuetify.breakpoint.xs || $vuetify.breakpoint.sm, 'mt-10': $vuetify.breakpoint.lgAndUp }"
+          >
+            <h2 
+              class="font-weight-medium text-left px-10 py-1 white--text text-h6 common_sub-header rounded mb-5"
+              :style="{ background: $vuetify.theme.themes.light.main }"
+            >
+              SNS
+            </h2>
+            <p class="pl-3 text-left">
+              SNSも少しだけやってますのでフォローいただけると嬉しいです。
+            </p>
+            <div class="contact-sns-area clearfix">
+              <div class="d-flex justify-center">
+                <div 
+                  v-for="(sns, index) in snsLink"
+                  :key="index"
+                  class="sns-icon"
+                >
+                  <a
+                    :href="sns.link"
+                    target="_blank"
+                  >
+                    <component :is="sns.icon" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-          </div>
-        </div>
-      </v-col>
-      <v-col 
-        no-gutters
-        cols="12"
-        sm="12" 
-        md="7">
-        <v-card 
-          elevation="2" 
-          outlined 
-          :loading="card.isLoading"
-          class="mx-2 my-5 px-5">
-          <v-form ref="form" fast-fail @submit.prevent>
-            <v-container>
-              <v-card-title class="font-weight-bold">
-                <span class="common_sub-header main--text">お問い合わせフォーム</span>
-              </v-card-title>
-              <p class="txt-light--text">{{ card.message.html }}</p>
-              <v-row no-gutters class="justify-center">
-                <v-col no-gutters cols="12">
-                  <v-text-field 
-                    v-model="formInput.name.text" 
-                    label="お名前" 
-                    placeholder="TARO YAMADA"
-                    required 
-                    outlined 
-                    :rules="formInput.name.rules"
-                    :disabled="formDisabled" />
-                </v-col>
-                <v-col no-gutters cols="12">
-                  <v-text-field 
-                    v-model="formInput.email.text" 
-                    label="email" 
-                    placeholder="contact@bbbsquash-cloud.com"
-                    required 
-                    outlined
-                    :rules="formInput.email.rules" 
-                    :disabled="formDisabled" />
-                </v-col>
-                <v-col no-gutters cols="12">
-                  <v-textarea 
-                    v-model="formInput.content.text" 
-                    label="お問合せ内容" 
-                    required 
-                    outlined
-                    :rules="formInput.content.rules"
-                    :disabled="formDisabled" />
-                </v-col>
-                <v-col 
-                  no-gutters 
-                  class="d-flex justify-center align-center"
-                  cols="6" 
-                  sm="4">
-                  <v-btn 
-                    type="submit"
-                    class="elevation-0 mx-auto white--text py-3 px-6"
-                    color="font-accent"
-                    @click="submit">
-                    {{ card.button.text }}
-                  </v-btn>
-                </v-col>
-                <v-col 
-                  v-show="card.cancelButton.isShow"
-                  no-gutters 
-                  cols="6" 
-                  sm="4">
-                  <v-btn 
-                    class="elevation-0 mx-auto white--text py-3 px-6"
-                    color="font-accent"
-                    @click="cancel">
-                    キャンセル
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-form>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-
+        </v-col>
+        <v-col 
+          no-gutters
+          cols="12"
+          sm="12" 
+          md="7"
+        >
+          <v-card 
+            elevation="2" 
+            outlined 
+            :loading="card.isLoading"
+            class="mx-2 my-5 px-5"
+          >
+            <v-form
+              ref="form"
+              fast-fail
+              @submit.prevent
+            >
+              <v-container>
+                <v-card-title class="font-weight-bold">
+                  <span class="common_sub-header main--text">お問い合わせフォーム</span>
+                </v-card-title>
+                <p class="txt-light--text">
+                  {{ card.message.html }}
+                </p>
+                <v-row
+                  no-gutters
+                  class="justify-center"
+                >
+                  <v-col
+                    no-gutters
+                    cols="12"
+                  >
+                    <v-text-field 
+                      v-model="formInput.name.text" 
+                      label="お名前" 
+                      placeholder="TARO YAMADA"
+                      required 
+                      outlined 
+                      :rules="formInput.name.rules"
+                      :disabled="formDisabled"
+                    />
+                  </v-col>
+                  <v-col
+                    no-gutters
+                    cols="12"
+                  >
+                    <v-text-field 
+                      v-model="formInput.email.text" 
+                      label="email" 
+                      placeholder="contact@bbbsquash-cloud.com"
+                      required 
+                      outlined
+                      :rules="formInput.email.rules" 
+                      :disabled="formDisabled"
+                    />
+                  </v-col>
+                  <v-col
+                    no-gutters
+                    cols="12"
+                  >
+                    <v-textarea 
+                      v-model="formInput.content.text" 
+                      label="お問合せ内容" 
+                      required 
+                      outlined
+                      :rules="formInput.content.rules"
+                      :disabled="formDisabled"
+                    />
+                  </v-col>
+                  <v-col 
+                    no-gutters 
+                    class="d-flex justify-center align-center"
+                    cols="6" 
+                    sm="4"
+                  >
+                    <v-btn 
+                      type="submit"
+                      class="elevation-0 mx-auto white--text py-3 px-6"
+                      color="font-accent"
+                      @click="submit"
+                    >
+                      {{ card.button.text }}
+                    </v-btn>
+                  </v-col>
+                  <v-col 
+                    v-show="card.cancelButton.isShow"
+                    no-gutters 
+                    cols="6" 
+                    sm="4"
+                  >
+                    <v-btn 
+                      class="elevation-0 mx-auto white--text py-3 px-6"
+                      color="font-accent"
+                      @click="cancel"
+                    >
+                      キャンセル
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </section>
 </template>
 <script>
-import LogoZenn from '@/assets/img/zenn.svg';
-import LogoWantedly from '@/assets/img/wantedly.svg';
-import LogoTwitter from '@/assets/img/twitter.svg';
-import LogoGitHub from '@/assets/img/github.svg';
+import LogoZenn from '@/assets/img/svg/zenn.svg';
+import LogoWantedly from '@/assets/img/svg/wantedly.svg';
+import LogoTwitter from '@/assets/img/svg/twitter.svg';
+import LogoGitHub from '@/assets/img/svg/github.svg';
 import conf from '@/config/ContactForm';
 
 export default {

@@ -1,19 +1,26 @@
 <template>
   <div class="about-me-contents mb-3 mt-10">
-    <v-profile></v-profile>
+    <v-profile />
     <v-container>
-      <v-row no-gutters class="justify-center mb-6">
-        <v-timeline side="end" :dense="$vuetify.breakpoint.smAndDown">
+      <v-row
+        no-gutters
+        class="justify-center mb-6"
+      >
+        <v-timeline
+          side="end"
+          :dense="$vuetify.breakpoint.smAndDown"
+        >
           <v-timeline-item
             v-for="(history, index) in histories"
             :key="index"
             size="small"
             :color="history.dotColor"
-            >
+          >
             <template v-slot:opposite>
               <div
-              class="pt-1 pl-3 headline font-weight-bold main--text"
-              v-text="history.year"/>
+                class="pt-1 pl-3 headline font-weight-bold main--text"
+                v-text="history.year"
+              />
             </template>
             <div class="history-container">
               <h3>
@@ -30,9 +37,7 @@
 </template>
 
 <script>
-// import Profile from '@/components/modules/Profile';
 import Profile from '@/components/modules/Profile';
-// import History from '@/components/modules/History';
 
 export default {
   name: 'AboutMe',

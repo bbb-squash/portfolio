@@ -1,5 +1,5 @@
 {
-    "singleQuote": true,
-    "semi": false,
-    "htmlWhitespaceSensitivity": "ignore"
+  "singleQuote": true,
+  "semi": false,
+  "htmlWhitespaceSensitivity": "ignore"
 }

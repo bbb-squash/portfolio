@@ -124,7 +124,7 @@
   .split-img {
     width: 50%;
     height: 70vh;
-    background-image: url(../img/site_top.png);
+    background-image: url(../img/png/site_top.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -353,7 +353,7 @@
       width: 100%;
       height: 30vh;
       margin-bottom: 20px;
-      background-image: url(../img/site_top.png);
+      background-image: url(../img/png/site_top.png);
     }
   
     .split-title {

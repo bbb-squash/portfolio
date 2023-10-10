@@ -1,14 +1,15 @@
 <template>
   <v-app>
-    <v-header :contents="contents"></v-header>
+    <v-header :contents="contents" />
     <v-main>
       <v-container 
         fluid
-        pa-0>
-        <router-view></router-view>
+        pa-0
+      >
+        <router-view />
       </v-container>
     </v-main>
-    <v-footer :contents="contents"></v-footer>
+    <v-footer :contents="contents" />
   </v-app>
 </template>
 
@@ -42,16 +43,11 @@ export default {
 </script>
 
 <style>
-  /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto:wght@500&display=swap'); */
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=PT+Sans:wght@700&family=Roboto:wght@500&display=swap');
   #app {
-    /* font-family: 'PT Sans', 'Noto Sans JP', sans-serif; */
     font-family: "BIZ UDPGothic", "Meiryo UI", Meiryo, -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 1rem;
-    /* line-height: 1.8; */
-    /* letter-spacing: .8px; */
   }
-
   .page-title {
     font-size: 2.6rem;
     font-weight: 400;
