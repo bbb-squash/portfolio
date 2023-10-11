@@ -53,7 +53,7 @@
         <v-list-item link>
           <v-list-item-avatar tile>
             <v-img 
-              src="@/assets/img/png/site_top.png"
+              src="@/assets/png/site_top.png"
               max-height="30"
               max-width="30"
             />

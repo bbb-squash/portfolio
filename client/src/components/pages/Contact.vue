@@ -176,10 +176,10 @@
   </section>
 </template>
 <script>
-import LogoZenn from '@/assets/img/svg/zenn.svg';
-import LogoWantedly from '@/assets/img/svg/wantedly.svg';
-import LogoTwitter from '@/assets/img/svg/twitter.svg';
-import LogoGitHub from '@/assets/img/svg/github.svg';
+import LogoZenn from '@/assets/svg/zenn.svg';
+import LogoWantedly from '@/assets/svg/wantedly.svg';
+import LogoTwitter from '@/assets/svg/twitter.svg';
+import LogoGitHub from '@/assets/svg/github.svg';
 import conf from '@/config/ContactForm';
 
 export default {
