@@ -1,47 +1,23 @@
 <template>
-  <div class="about-me-contents mb-3 mt-10">
+  <section
+    id="about-me"
+    class="mb-3 mt-10"
+  >
     <v-profile />
-    <v-container>
-      <v-row
-        no-gutters
-        class="justify-center mb-6"
-      >
-        <v-timeline
-          side="end"
-          :dense="$vuetify.breakpoint.smAndDown"
-        >
-          <v-timeline-item
-            v-for="(history, index) in histories"
-            :key="index"
-            size="small"
-            :color="history.dotColor"
-          >
-            <template v-slot:opposite>
-              <div
-                class="pt-1 pl-3 headline font-weight-bold main--text"
-                v-text="history.year"
-              />
-            </template>
-            <div class="history-container">
-              <h3>
-                {{ history.title }}
-                <span v-if="history.remarks">{{ history.remarks }}</span>
-              </h3>
-              <p>{{ history.text }}</p>
-            </div>
-          </v-timeline-item>
-        </v-timeline>
-      </v-row>
-    </v-container>
-  </div>
+    <v-history :histories="histories" />
+  </section>
 </template>
 
 <script>
-import Profile from '@/components/modules/Profile';
+import Profile from '@/components/modules/Profile/Profile';
+import History from '@/components/modules/History/History';
 
 export default {
   name: 'AboutMe',
-  components: { 'v-profile': Profile },
+  components: {
+    'v-profile': Profile, 
+    'v-history': History 
+  },
 
   data: function () {
     return { histories: [
@@ -76,18 +52,12 @@ export default {
       {
         year: 2017,
         title: 'INIAD',
-        text: '1期生として入学し、コンピュータ・サイエンスを勉強していました。WPT×遺伝的アルゴリズムをテーマに卒業論文を執筆し、学内で表彰 / 学会論文に参加しました。',
+        text: '1期生として入学し、コンピュータ・サイエンスを勉強していました。WPT×遺伝的アルゴリズムをテーマに卒業論文を執筆し、学内でちょっとした表彰をしてもらいました。',
         remarks: null,
         dotColor: 'main'
       }
     ] }
-  },
-  computed: {}
+  }
 };
 </script>
-
-<style scoped>
-  .theme--light.v-timeline:before {
-    background: var(--v-sub-base);
-  }
-</style>
+<style src="./style.css" scoped></style>

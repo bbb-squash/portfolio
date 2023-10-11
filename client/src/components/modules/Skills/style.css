@@ -1,0 +1,87 @@
+#skill .skill-container .skill-container-header svg {
+  fill: var(--v-accent-base);
+  width: 80%;
+  height: auto;
+  float: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.skill-container > p {
+  color: black;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+#skill > .container > span {
+  color: var(--v-main-base);
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.skill-capability {
+  display: inline-block;
+  padding: 1px 3px;
+  margin: 3px;
+  color: var(--v-accent-dark-base);
+  border: 1px solid var(--v-accent-dark-base);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.color-accent {
+  color: var(--v-accent-base);
+}
+
+#skill .container-header {
+  margin: 0 1%;
+}
+
+#skill .container-header div {
+  float: left;
+}
+
+#skill .container-header svg {
+  fill: var(--v-accent-base);
+  width: 80%;
+  height: auto;
+  float: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#skill .container-header .icon-box {
+  width: 40px;
+  position: relative;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid var(--v-accent-base);
+}
+
+#skill .container-header .title-box {
+  font-size: 22px !important;
+  padding-left: 8px;
+  height: 40px;
+}
+
+#skill .container-header .title-box p {
+  margin: 0 !important;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+#skill .container-header .icon-title {
+  width: 80%;
+}
+
+.icon-box::before {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}

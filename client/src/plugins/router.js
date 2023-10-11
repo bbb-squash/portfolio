@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Top from '@/components/pages/Top.vue';
-import AboutMe from '@/components/pages/AboutMe.vue';
-import Work from '@/components/pages/Work.vue';
+import Top from '@/components/pages/Top/Top.vue';
+import AboutMe from '@/components/pages/AboutMe/AboutMe.vue';
+import Work from '@/components/pages/Work/Work.vue';
 import Contact from '@/components/pages/Contact.vue';
 
 Vue.use(VueRouter);

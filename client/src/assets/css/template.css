@@ -40,7 +40,7 @@
   /*--------------------------------
    見出し
   ---------------------------------*/
-  .title {
+  /* .title {
     font-size: 34px;
     font-weight: normal;
     font-weight: bold;
@@ -48,16 +48,16 @@
     margin-bottom: 40px;
     letter-spacing: .05em;
     color: #333;
-  }
+  } */
   
-  .lead {
+  /* .lead {
     margin-bottom: 30px;
-  }
+  } */
   
   /*--------------------------------
   ヘッダー
   ---------------------------------*/
-  .header {
+  /* .header {
     position: fixed;
     top: 0;
     z-index: 1;
@@ -102,12 +102,12 @@
   
   .header-nav-item a:hover {
     opacity: .8;
-  }
+  } */
   
   /*--------------------------------
    スプリットスクリーン
   ---------------------------------*/
-  .split {
+  /* .split {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -136,7 +136,7 @@
     line-height: 1.2;
     margin-bottom: 20px;
     letter-spacing: .05em;
-  }
+  } */
   
   /*--------------------------------
    Works
@@ -391,8 +391,8 @@
     }
   
     /* フッター */
-    .footer {
+    /* .footer {
       padding: 20px;
-    }
+    } */
   }
   

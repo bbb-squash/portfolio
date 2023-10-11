@@ -1,0 +1,27 @@
+.project-container {
+  height: 100%;
+  margin: 5px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .2);
+  border-radius: 10px;
+}
+
+.project-container > img {
+  border-radius: 10px 10px 0 0;
+}
+
+.project-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--v-main-base);
+}
+
+.project-text {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.project-date {
+  text-align: right;
+  font-size: 14px;
+}
