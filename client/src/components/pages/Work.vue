@@ -97,9 +97,9 @@
 </template>
 
 <script>
-import WorkFrontend from '@/assets/svg/work-frontend.svg';
-import WorkBackend from '@/assets/svg/work-backend.svg';
-import WorkInfrastructure from '@/assets/svg/work-infrastructure.svg';
+import WorkFrontend from '@/assets/svg/frontend.svg';
+import WorkBackend from '@/assets/svg/backend.svg';
+import WorkInfrastructure from '@/assets/svg/infrastructure.svg';
 
 export default {
   name: 'Work',
