@@ -1,5 +1,5 @@
 <template>
-  <section id="skill">
+  <section id="profile">
     <v-container>
       <v-row
         no-gutters
@@ -26,7 +26,7 @@
             <div class="profile-icon-box">
               <img
                 src="@/assets/png/profile.png"
-                alt="Logo"
+                alt="profile"
               >
             </div>
             <h3>BBB-SQUASH</h3>
@@ -39,15 +39,15 @@
               コンサル会社での経験を活かし、モノづくりだけではなく提案もできるような、一括りでは表せない人材を目指しています。
             </p>
             <div class="profile-context-box clearfix">
-              <div class="profile-strengthFinder-area clearfix">
+              <div class="profile-strength-finder-area clearfix">
                 <h4>ストレングス・ファインダー</h4>
                 <div
                   class="justify-center"
                   :class="{ 'd-flex': !$vuetify.breakpoint.xs }"
                 >
-                  <p><span class="strengthFinder-rank rank-top">1st</span>ポジティブ</p>
-                  <p><span class="strengthFinder-rank">2nd</span>調和性</p>
-                  <p><span class="strengthFinder-rank">3rd</span>包含</p>
+                  <p><span class="strength-finder-rank rank-top">1st</span>ポジティブ</p>
+                  <p><span class="strength-finder-rank">2nd</span>調和性</p>
+                  <p><span class="strength-finder-rank">3rd</span>包含</p>
                 </div>
               </div>
               <div class="profile-sns-area clearfix">
@@ -61,6 +61,7 @@
                     <a
                       :href="sns.link"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <component :is="sns.icon" />
                     </a>
@@ -71,13 +72,6 @@
           </div>
         </div>
       </v-row>
-      <h2 class="page-sub-title">
-        History
-      </h2>
-      <p class="page-sub-introduction">
-        小学生の頃からパソコンは使用し始め、Youtubeやニコニコ動画を見ていました。<br>
-        その後、大学生の時からプログラムを勉強し始め、コンサル会社・広告事業会社のほか、学生時代のインターン / 業務委託を含めると4社で勤務した経験があります。
-      </p>
     </v-container>
   </section>
 </template>
@@ -114,7 +108,7 @@ export default {
         link: 'https://zenn.dev/bbb_squash',
         icon: LogoZenn
       }] }
-  },
-  computed: {}
+  }
 }
 </script>
+<style src="./style.css" scoped></style>

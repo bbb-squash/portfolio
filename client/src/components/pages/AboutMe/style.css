@@ -1,0 +1,3 @@
+.theme--light.v-timeline:before {
+  background: var(--v-sub-base);
+}

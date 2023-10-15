@@ -10,103 +10,24 @@
         </h1>
       </v-row>
       <v-divider />
-      <h2 class="page-sub-title">
-        Skills
-      </h2>
-      <p class="page-sub-introduction">
-        バッグエンドはPython（Django）、Nodejs、Scalaをメインに使用しています。<br>
-        インフラ環境はAWSでの構築経験が多く、基本的なサービスの多くは使用経験があります。
-      </p>
-      <v-row
-        no-gutters
-        class="pa-4"
-      >
-        <v-col
-          v-for="(skill, index) in skills"
-          :key="index"
-          cols="12"
-          sm="12"
-          md="4"
-          class="mb-3"
-        >
-          <div class="skill-container ma-2 pa-2">
-            <div class="container-header mb-2 clearfix">
-              <div class="icon-box">
-                <component
-                  :is="skill.icon"
-                  class="skill-container-title-icon"
-                />
-              </div>
-              <div class="title-box">
-                <p>{{ skill.title }}</p>
-              </div>
-            </div>
-            <p class="skill-text">
-              {{ skill.text }}
-            </p>
-            <span
-              v-for="(capability, index) in skill.capabilities"
-              :key="index"
-              class="skill-capability"
-            >{{ capability }}</span>
-          </div>
-        </v-col>
-      </v-row>
-      <h2 class="page-sub-title">
-        Projects
-      </h2>
-      <p class="page-sub-introduction">
-        これまでに開発してきたプロジェクトの一覧です。<br>
-        小規模な受託開発がメインですが、スピード感を持って実装しています。
-      </p>
-      <v-row
-        no-gutters
-        class="pa-4"
-      >
-        <template v-for="(project, index) in projects">
-          <v-col
-            v-if="project.isShow"
-            :key="index"
-            cols="12"
-            sm="6"
-            md="4"
-            class="mb-2"
-          >
-            <div class="project-container">
-              <img :src="project.image">
-              <div class="pa-2">
-                <p class="project-title">
-                  {{ project.title }}
-                </p>
-                <span class="project-text">{{ project.text }}</span>
-                <p class="project-date">
-                  {{ project.date }}
-                </p>
-                <span
-                  v-for="(tool, index) in project.tools"
-                  :key="index"
-                  class="skill-capability"
-                >{{ tool }}</span>
-              </div>
-            </div>
-          </v-col>
-        </template>
-      </v-row>
+      <v-skills :skills="skills" />
+      <v-projects :projects="projects" />
     </v-container>
   </section>
 </template>
 
 <script>
-import WorkFrontend from '@/assets/svg/frontend.svg';
-import WorkBackend from '@/assets/svg/backend.svg';
-import WorkInfrastructure from '@/assets/svg/infrastructure.svg';
+import Skills from '@/components/modules/Skills/Skills'
+import Projects from '@/components/modules/Projects/Projects'
+import WorkFrontend from '@/assets/svg/frontend.svg'
+import WorkBackend from '@/assets/svg/backend.svg'
+import WorkInfrastructure from '@/assets/svg/infrastructure.svg'
 
 export default {
   name: 'Work',
   components: {
-    WorkFrontend: WorkFrontend,
-    WorkBackend: WorkBackend,
-    WorkInfrastructure: WorkInfrastructure
+    'v-skills': Skills,
+    'v-projects': Projects
   },
   data: function() { 
     return {

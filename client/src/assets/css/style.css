@@ -33,84 +33,6 @@ p {
     white-space: pre-line;
 }
 
-/* about me */
-.profile-container {
-    width: 100%;
-    box-shadow: 0 5px 25px 0 rgba(4, 76, 100, .2);
-    border-radius: 10px;
-    min-height: 200px;
-    /* min-height: 300px; */
-}
-
-.profile-left-contents {
-    padding: 10px;
-    float: left;
-    background-color: var(--v-main-base);
-    height: 100%;
-    width: 30%;
-    border-radius: 10px 0 0 10px;
-    border-right: 8px solid var(--v-accent-base);
-    color: white;
-}
-
-.profile-left-contents h3 {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 900;
-}
-
-.profile-left-contents p {
-    display: block;
-    width: 100%;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 5px;
-    color: var(--v-accent-dark-base);
-    font-weight: bold;
-}
-
-.profile-right-contents {
-    width: 70%;
-    height: 100%;
-    float: left;
-}
-
-.profile-icon-box {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 20px auto 20px auto;
-    border: 3px solid var(--v-sub-base);
-}
-
-.profile-context-box {
-    margin-top: 25px;
-}
-
-.profile-strengthFinder-area {
-    width: 60%;
-    height: 100%;
-    margin: 0 auto;
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
-    margin-right: 5%;
-}
-
-.profile-sns-area {
-    width: 35%;
-    height: 100%;
-    float: left;
-}
-
-.profile-sns-area .sns-icon {
-    width: 40px;
-    height: 40px;
-}
-
 .sns-icon {
     background-color: var(--v-sub-base);
     border-radius: 50%;
@@ -119,89 +41,24 @@ p {
     margin-right: 20px;
     margin-right: 10%;
     text-align: center;
-}
-
-.sns-icon svg {
+  }
+  
+  .sns-icon svg {
     width: 100%;
     height: 100%;
     fill: white;
-}
-
-.sns-icon:hover {
+  }
+  
+  .sns-icon:hover {
     -webkit-box-shadow: 0 1px 2px #666;
     box-shadow: 0 1px 2px #666;
-}
-
-
-.sns-icon:last-child {
+  }
+  
+  
+  .sns-icon:last-child {
     margin-right: 0;
 }
 
-.profile-strengthFinder-area p {
-    display: block;
-    float: left;
-    width: 130px;
-    padding-bottom: 2px;
-    border-bottom: 2px solid var(--v-sub-base);
-    margin-right: 28px;
-}
-
-.profile-strengthFinder-area p:last-child {
-    margin-right: 0;
-}
-
-
-.profile-strengthFinder-area h4,
-.profile-sns-area h4 {
-    width: 100%;
-    display: block;
-    padding-bottom: 2px;
-    background-color: var(--v-main-base);
-    color: white;
-    font-size: 12px;
-    text-align: center;
-    border-radius: 10px;
-    font-weight: bold;
-    margin: 0 auto 30px auto;
-}
-
-.strengthFinder-rank {
-    width: 46px;
-    display: inline-block;
-    margin-right: 5px;
-    padding: 5px 10px;
-    color: white;
-    background-color: var(--v-accent-dark-base);
-    border-radius: 6px;
-    text-align: center;
-}
-
-.rank-top {
-    background-color: var(--v-accent-base);
-}
-
-.history-container {
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 5px 25px 0 rgba(4, 76, 100, .2);
-    border-radius: 10px;
-    padding: 15px;
-}
-
-.history-container h3 {
-    color: var(--v-main-base);
-    margin-bottom: 10px;
-}
-
-.history-container span {
-    display: inline-block;
-    padding: 4px 6px;
-    background-color: var(--v-accent-dark-base);
-    color: white;
-    font-size: 14px;
-    border-radius: 10px;
-    margin-left: 10px;
-}
 
 /* skill */
 #skill .v-btn__content {
@@ -439,82 +296,8 @@ p {
 .v-btn:not(.v-btn--round).v-size--default {
     font-family: "BIZ UDPGothic", "Meiryo UI", Meiryo, -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
-
-/* responsive */
-
-/* about me */
-
-@media (max-width: 1280px) {
-    .profile-strengthFinder-area {
-      width: 90%;
-      margin: 0 5%;
-    }
-    .profile-sns-area {
-        width: 90%;
-        margin: 0 5%;
-    }
-}
-
-@media (max-width: 960px) {
-    .profile-left-contents {
-        width: 100%;
-        float: none;
-        border-radius: 10px 10px 0 0;
-        border-right: 0;
-        border-bottom: 8px solid var(--v-accent-base);
-        height: auto;
-    }
-    .profile-right-contents {
-        width: 100%;
-        float: none;
-    }
-
-}
-
 @media (max-width: 600px) {
-    /* .profile-strengthFinder-area {
-        width: 80%;
-        margin: 0 10%;
-    } */
-    /* .profile-strengthFinder-area p {
-        width: 100px;
-        text-align: center;
-    } */
-
-    .strengthFinder-rank {
-        display: block;
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    .profile-strengthFinder-area {
-        width: 100%;
-        margin: 0 auto;
-    }
-    
-    .profile-strengthFinder-area p {
-        float: none;
-        margin: 0 auto 16px auto;
-        text-align: center;
-        width: 60%;
-        min-width: 160px;
-    }
-
-    .profile-strengthFinder-area p:last-child {
-        margin: 0 auto 16px auto;
-    }
-
-    .profile-sns-area {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    
     .sns-icon {
         margin-right: 3%;
     }
-}
-
-@media (max-width: 450px) {
-
 }
