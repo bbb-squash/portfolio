@@ -1,0 +1,22 @@
+.header-link-text {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.header-link-text:before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+  background: #044c64;
+  transform: scale(0, 1);
+  transform-origin: left;
+  transition: 0.4s;
+}
+
+.header-link-text:hover:before {
+  transform: scale(1);
+}

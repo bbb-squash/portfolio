@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Header from '@/components/modules/Header';
+import Header from '@/components/modules/Header/Header';
 import Footer from '@/components/modules/Footer';
 
 export default {
@@ -27,16 +27,16 @@ export default {
 
   data: () => ({ contents: [
     {
-      name: 'Home', icon: 'mdi-home', pathName: 'top' 
+      name: 'Home', icon: 'mdi-home', pathName: '/' 
     },
     {
-      name: 'About Me', icon: 'mdi-human-handsup', pathName: 'about' 
+      name: 'About Me', icon: 'mdi-human-handsup', pathName: '/about' 
     },
     {
-      name: 'Work', icon: 'mdi-tools', pathName: 'work' 
+      name: 'Work', icon: 'mdi-tools', pathName: '/work' 
     },
     {
-      name: 'Contact', icon: 'mdi-pin', pathName: 'contact' 
+      name: 'Contact', icon: 'mdi-pin', pathName: '/contact' 
     }
   ] })
 };

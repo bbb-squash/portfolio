@@ -14,7 +14,6 @@
         class="elevation-0 mx-auto"
         max-width="1200"
       >
-        <!-- 画面サイズがbreakpoint.xs以下であれば、navアイコンを表示 -->
         <v-app-bar-nav-icon
           v-if="$vuetify.breakpoint.xs" 
           class="font-accent--text"
@@ -31,9 +30,9 @@
             v-for="content in contents"
             :key="content.name"
           >
-            <router-link :to="{ name: content.pathName }">
+            <router-link :to="content.pathName">
               <span 
-                class="header_link-text font-weight-medium font-accent--text"
+                class="header-link-text font-weight-medium font-accent--text"
                 :class="{ 'mr-5': $vuetify.breakpoint.sm, 'mr-13': $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"
               >
                 {{ content.name }}
@@ -53,7 +52,7 @@
         <v-list-item link>
           <v-list-item-avatar tile>
             <v-img 
-              src="@/assets/png/site_top.png"
+              src="@/assets/png/site_logo.png"
               max-height="30"
               max-width="30"
             />
@@ -72,7 +71,7 @@
           <router-link
             v-for="(content, index) in contents" 
             :key="index" 
-            :to="{ name: content.path_name }" 
+            :to="content.pathName" 
             class="text-decolation-none"
           >
             <v-list-item>
@@ -96,38 +95,12 @@ export default {
     type: Array,
     required: true
   } },
-
-  data() {
+  data: () =>  {
     return {
       mydrawer: false,
-      mygroup: null,
-      headerFullDrawWidth: 650,
       selectedItem: 1
-    }
+    };
   }
 }
 </script>
-
-<style scoped>
-  .header_link-text {
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-  }
-  .header_link-text:before{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 3px;
-    background: #044c64;
-    transform: scale(0, 1);
-    transform-origin: left;
-    transition: 0.4s;
-  }
-  .header_link-text:hover:before {
-    transform: scale(1);
-  }
-
-</style>
+<style src="./style.css" scoped></style>

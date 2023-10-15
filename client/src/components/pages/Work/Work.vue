@@ -19,18 +19,15 @@
 <script>
 import Skills from '@/components/modules/Skills/Skills'
 import Projects from '@/components/modules/Projects/Projects'
-import WorkFrontend from '@/assets/svg/frontend.svg';
-import WorkBackend from '@/assets/svg/backend.svg';
-import WorkInfrastructure from '@/assets/svg/infrastructure.svg';
+import WorkFrontend from '@/assets/svg/frontend.svg'
+import WorkBackend from '@/assets/svg/backend.svg'
+import WorkInfrastructure from '@/assets/svg/infrastructure.svg'
 
 export default {
   name: 'Work',
   components: {
     'v-skills': Skills,
-    'v-projects': Projects,
-    WorkFrontend,
-    WorkBackend,
-    WorkInfrastructure
+    'v-projects': Projects
   },
   data: function() { 
     return {

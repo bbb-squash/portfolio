@@ -20,7 +20,7 @@
         class="mb-3"
       >
         <div class="skill-container ma-2 pa-2">
-          <div class="container-header mb-2 clearfix">
+          <div class="skill-container-header mb-2 clearfix">
             <div class="icon-box">
               <component
                 :is="skill.icon"
@@ -46,16 +46,12 @@
 </template>
 
 <script>
-
 export default {
   name: 'Skills',
   props: { skills: {
     type: Array,
     required: true
-  } },
-  setup() {
-    
-  }
+  } }
 }
 </script>
 <style src="./style.css" scoped></style>
