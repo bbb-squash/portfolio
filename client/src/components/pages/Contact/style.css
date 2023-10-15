@@ -1,0 +1,21 @@
+.contact-sns-area {
+  width: 100%;
+  height: 100%;
+  float: left;
+
+}
+
+.contact-sns-area .sns-icon {
+  width: 50px;
+  height: 50px;
+}
+
+#contact .message-baddie {
+  display: inline-block;
+  padding: 2px 6px;
+  background-color: var(--v-sub-base);
+  color: white;
+  font-size: 14px;
+  border-radius: 10px;
+  margin-left: 10px;
+}

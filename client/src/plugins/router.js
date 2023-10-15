@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Top from '@/components/pages/Top/Top.vue';
-import AboutMe from '@/components/pages/AboutMe/AboutMe.vue';
-import Work from '@/components/pages/Work/Work.vue';
-import Contact from '@/components/pages/Contact.vue';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Top from '@/components/pages/Top/Top.vue'
+import AboutMe from '@/components/pages/AboutMe.vue'
+import Work from '@/components/pages/Work/Work.vue'
+import Contact from '@/components/pages/Contact/Contact.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -20,11 +20,11 @@ const routes = [
   {
     path: '/contact', component: Contact, name: 'contact' 
   }
-];
+]
 
 const router = new VueRouter({
   routes,
   mode: 'history'
-});
+})
 
-export default router;
+export default router

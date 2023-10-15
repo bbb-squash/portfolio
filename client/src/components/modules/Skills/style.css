@@ -1,8 +1,36 @@
+.skill-container {
+  background-color: white;
+  border-top: solid 10px var(--v-sub-base);
+  box-shadow: 0 5px 25px 0 rgba(4, 76, 100, .2);
+  color: var(--v-main-base);
+  padding: 1%;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.skill-container .skill-container-header svg {
+  fill: var(--v-accent-base);
+  width: 80%;
+  height: auto;
+  float: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 .skill-container > p {
   color: black;
   font-size: 14px;
   margin-bottom: 8px;
 }
+
+/* #skill > .container > span {
+  color: var(--v-main-base);
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+} */
 
 .skill-capability {
   display: inline-block;
