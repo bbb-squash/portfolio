@@ -7,8 +7,8 @@
         </p>
         <p class="top-text">
           都内でソフトウェアエンジニアをしています。<br>
+          バックエンドとインフラがメインです。<br>
           本読んだり、フットサルや散歩して体動かすことが好きです。<br>
-          もっと多くの人に自分を知ってもらいたく作成しました。<br>
           細々とですが、更新してたりします。
         </p>
       </div>
@@ -22,9 +22,9 @@
 
 
 <script>
-import AboutMe from '@/components/pages/AboutMe/AboutMe';
+import AboutMe from '@/components/pages/AboutMe';
 import Work from '@/components/pages/Work/Work';
-import Contact from '@/components/pages/Contact';
+import Contact from '@/components/pages/Contact/Contact';
 export default {
   name: 'App',
 
