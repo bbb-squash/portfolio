@@ -77,7 +77,7 @@ export default {
   .page-sub-title::before {
     display: inline-block;
     content: '◼️';
-    color: var(--v-accent-base);
+    color: #d96738;
     margin-right: 4px;
   }
   .page-sub-introduction {

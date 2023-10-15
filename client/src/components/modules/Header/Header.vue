@@ -72,7 +72,7 @@
             v-for="(content, index) in contents" 
             :key="index" 
             :to="content.pathName" 
-            class="text-decolation-none"
+            class="text-decoration-none"
           >
             <v-list-item>
               <v-list-item-content>
