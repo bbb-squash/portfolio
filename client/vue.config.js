@@ -9,16 +9,18 @@ module.exports = {
     const svgRule = config.module.rule('svg');
     svgRule.uses.clear();
     svgRule.use('vue-svg-loader').loader('vue-svg-loader');
-
-    // eslint-loader の設定を追加
     config.module
       .rule('eslint')
       .use('eslint-loader')
       .loader('eslint-loader')
       .tap((options) => {
-        options.fix = true; // 自動修正を有効にする場合
-        options.emitWarning = true; // 警告を有効にする場合
+        options.fix = true;
+        options.emitWarning = true;
         return options;
       });
-  }
+  },
+  pages: { index: {
+    entry: 'src/main.js',
+    title: 'portfolio - BBB-SQUASH'
+  }  }
 };
