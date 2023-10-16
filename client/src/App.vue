@@ -77,8 +77,12 @@ export default {
   .page-sub-title::before {
     display: inline-block;
     content: '◼️';
-    color: #d96738;
+    color: #d96738 !important;
     margin-right: 4px;
+    -webkit-display: inline-block;
+    -webkit-content: '◼️';
+    -webkit-color: #d96738 !important;
+    -webkit-margin-right: 4px;
   }
   .page-sub-introduction {
     color: #666;
