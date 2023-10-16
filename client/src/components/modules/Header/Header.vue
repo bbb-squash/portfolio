@@ -35,6 +35,10 @@
                 class="header-link-text font-weight-medium font-accent--text"
                 :class="{ 'mr-5': $vuetify.breakpoint.sm, 'mr-13': $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"
               >
+                <v-icon
+                  color="main"
+                  size="medium"
+                >{{ content.icon }}</v-icon>
                 {{ content.name }}
               </span>
             </router-link>

@@ -1,6 +1,12 @@
 <template>
   <section id="projects">
-    <h2 class="page-sub-title">
+    <h2 class="page-sub-title d-flex align-center justify-center">
+      <v-icon
+        color="accent"
+        class="mr-3"
+      >
+        mdi-square
+      </v-icon>
       Projects
     </h2>
     <p class="page-sub-introduction">

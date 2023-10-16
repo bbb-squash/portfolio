@@ -32,22 +32,7 @@ export default {
     'AboutMe': AboutMe,
     'Work': Work,
     'Contact': Contact
-  },
-
-  data: () => ({ contents: [
-    {
-      name: 'Home', icon: 'mdi-home', pathName: 'top' 
-    },
-    {
-      name: 'About Me', icon: 'mdi-human-handsup', pathName: 'about' 
-    },
-    {
-      name: 'Work', icon: 'mdi-tools', pathName: 'work' 
-    },
-    {
-      name: 'Contact', icon: 'mdi-pin', pathName: 'contact' 
-    }
-  ] })
+  }
 }
 </script>
 
