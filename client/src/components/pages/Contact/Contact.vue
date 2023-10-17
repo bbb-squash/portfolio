@@ -242,7 +242,7 @@ export default {
           isShow: true
         },
         {
-          link: 'https://www.wantedly.com/id',
+          link: 'https://www.wantedly.com/id/bbbworksquash',
           icon: LogoWantedly,
           isShow: true
         },

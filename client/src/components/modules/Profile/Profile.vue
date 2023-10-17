@@ -107,7 +107,7 @@ export default {
         icon: LogoTwitter
       },
       {
-        link: 'https://twitter.com/bbb__squash',
+        link: 'https://www.wantedly.com/id/bbbworksquash',
         icon: LogoWantedly
       },
       {
