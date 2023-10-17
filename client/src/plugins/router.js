@@ -6,7 +6,6 @@ import Work from '@/components/pages/Work/Work.vue'
 import Contact from '@/components/pages/Contact/Contact.vue'
 
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/', component: Top, name: 'top' 
