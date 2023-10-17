@@ -32,6 +32,7 @@
             <div class="profile-icon-box">
               <img
                 src="@/assets/png/profile.png"
+                class="profile-img"
                 alt="profile"
               >
             </div>
