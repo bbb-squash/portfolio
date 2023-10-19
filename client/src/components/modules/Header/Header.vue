@@ -3,7 +3,7 @@
     <v-app-bar
       app
       dense
-      hide-on-scroll
+      :hide-on-scroll="!mydrawer"
       color="#fff"
       class="elevation-0 mx-auto"
     >
@@ -59,6 +59,7 @@
               src="@/assets/png/site_logo.png"
               max-height="30"
               max-width="30"
+              @click="toTop"
             />
           </v-list-item-avatar>
           <v-list-item-content>
@@ -104,7 +105,10 @@ export default {
       mydrawer: false,
       selectedItem: 1
     };
-  }
+  },
+  methods: { toTop: () => {
+    $router.push({ path: '/' })
+  } }
 }
 </script>
 <style src="./style.css" scoped></style>
