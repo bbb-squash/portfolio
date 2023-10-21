@@ -53,7 +53,7 @@
       fixed
     >
       <v-list nav>
-        <v-list-item link>
+        <v-list-item>
           <v-list-item-avatar tile>
             <v-img 
               src="@/assets/png/site_logo.png"
@@ -105,10 +105,7 @@ export default {
       mydrawer: false,
       selectedItem: 1
     };
-  },
-  methods: { toTop: () => {
-    $router.push({ path: '/' })
-  } }
+  }
 }
 </script>
 <style src="./style.css" scoped></style>
