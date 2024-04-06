@@ -59,7 +59,6 @@
               src="@/assets/png/site_logo.png"
               max-height="30"
               max-width="30"
-              @click="toTop"
             />
           </v-list-item-avatar>
           <v-list-item-content>
