@@ -23,6 +23,13 @@ export default {
     return { histories: [
       {
         year: 2023,
+        title: '株式会社MAGLAB',
+        text: 'toC向けのモバイルアプリケーション開発で、バックエンドなどの開発を行っています。',
+        remarks: '業務委託',
+        dotColor: 'main'
+      },
+      {
+        year: 2023,
         title: '株式会社サイバーエージェント',
         text: '広告事業に関するシステムのビジネスロジックの作成、大規模アカウントのデータ管理や、データ量の大きいAPIの制御・効率化などを行っております。',
         remarks: null,
