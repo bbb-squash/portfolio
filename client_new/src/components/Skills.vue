@@ -57,13 +57,4 @@ const props = defineProps<{
 .border-accent-dark {
   border-color: rgb(var(--v-theme-accent-dark)) !important;
 }
-.w-38px {
-  width: 38px;
-}
-.h-38px {
-  height: 38px;
-}
-.min-h-80px {
-  min-height: 80px;
-}
 </style>

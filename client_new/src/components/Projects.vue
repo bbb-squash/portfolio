@@ -26,9 +26,9 @@ const props = defineProps<{
           <v-img :src="item.image" class="rounded-t-lg" max-height="200" cover />
           <div class="pa-3">
             <h4 class="text-primary">{{ item.title }}</h4>
-            <p class="text-grey-darken-1 text-body-2 min-h-60px">{{ item.text }}</p>
+            <p class="text-grey-darken-1 text-body-2 min-h-80px">{{ item.text }}</p>
           </div>
-          <div class="px-3">
+          <div class="px-3 mb-3">
             <span
               v-for="(tool, i) in item.tools"
               :key="i"
@@ -45,8 +45,5 @@ const props = defineProps<{
 <style scoped>
 .border-accent-dark {
   border-color: rgb(var(--v-theme-accent-dark)) !important;
-}
-.min-h-60px {
-  min-height: 60px;
 }
 </style>
