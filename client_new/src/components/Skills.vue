@@ -54,6 +54,9 @@ const props = defineProps<{
 .border-accent {
   border-color: rgb(var(--v-theme-accent)) !important;
 }
+.border-accent-dark {
+  border-color: rgb(var(--v-theme-accent-dark)) !important;
+}
 .w-38px {
   width: 38px;
 }
