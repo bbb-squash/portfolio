@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import img from '@/assets/png/site_top.png'
-import AboutMeView from './AboutMeView.vue'
+import AboutMeView from '@/views/AboutMeView.vue'
+import WorkView from '@/views/WorkView.vue'
 import { useDisplay } from 'vuetify'
+
 const { mdAndUp } = useDisplay()
 </script>
 
@@ -37,4 +39,5 @@ const { mdAndUp } = useDisplay()
     />
   </div>
   <about-me-view />
+  <work-view />
 </template>

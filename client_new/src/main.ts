@@ -4,10 +4,10 @@ import App from './App.vue'
 import router from './router'
 
 import 'vuetify/styles'
+import 'vuetify/util/colors'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import colors from 'vuetify/util/colors' // eslint-disable-line
 import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({

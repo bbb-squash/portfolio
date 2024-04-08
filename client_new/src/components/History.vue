@@ -38,11 +38,11 @@ const { smAndDown } = useDisplay()
               </div>
             </template>
             <div class="box-shadow rounded-lg px-3 py-5 text-left">
-              <p class="text-primary text-h6 mb-3 d-flex">
+              <p class="text-primary text-h6 mb-3">
                 <strong>{{ item.title }}</strong>
                 <span
                   v-if="item.remarks"
-                  class="bg-accent-dark text-subtitle-2 py-1 px-2 ml-2 rounded-lg white-space-nowrap"
+                  class="bg-accent-dark text-subtitle-2 py-1 px-2 ml-2 rounded-lg d-inline-block"
                   ><strong>{{ item.remarks }}</strong></span
                 >
               </p>
