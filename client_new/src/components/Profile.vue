@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import profileImg from '@/assets/png/profile.png'
+import PageContentLayout from '@/layouts/PageContentLayout.vue'
 import { useDisplay } from 'vuetify'
 
 export type StrengthFinderItem = {
@@ -21,18 +22,12 @@ const { mdAndUp, smAndUp } = useDisplay()
 </script>
 
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12">
-        <p class="text-h5 text-primary font-weight-black mb-4 d-flex justify-center align-center">
-          <v-icon icon="mdi-square" size="x-small" color="accent" class="mr-2" />
-          Profile
-        </p>
-        <p class="text-subtitle-2 text-grey-darken-1">
-          簡単な自己紹介と、2021年に実施したストレングスファインダーの結果のうち、上位3つの資質です。<br />
-          いずれも「人間関係構築力」に分類されるものでした。
-        </p>
-      </v-col>
+  <page-content-layout title="Profile">
+    <template v-slot:description>
+      簡単な自己紹介と、2021年に実施したストレングスファインダーの結果のうち、上位3つの資質です。<br />
+      いずれも「人間関係構築力」に分類されるものでした。
+    </template>
+    <template v-slot:content>
       <v-col cols="12">
         <div :class="[mdAndUp ? 'd-flex' : undefined, 'rounded-lg', 'box-shadow']">
           <div
@@ -110,8 +105,8 @@ const { mdAndUp, smAndUp } = useDisplay()
           </div>
         </div>
       </v-col>
-    </v-row>
-  </v-container>
+    </template>
+  </page-content-layout>
 </template>
 
 <style scoped>
