@@ -1,14 +1,7 @@
 <script setup lang="ts">
+import type { HistoryItem } from '@/type'
 import PageContentLayout from '@/layouts/PageContentLayout.vue'
 import { useDisplay } from 'vuetify'
-
-export type HistoryItem = {
-  year: number
-  title: string
-  text: string
-  remarks?: string
-  dotColor: string
-}
 
 const props = defineProps<{
   historyItems: HistoryItem[]

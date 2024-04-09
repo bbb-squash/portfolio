@@ -2,6 +2,7 @@
 import img from '@/assets/png/site_top.png'
 import AboutMeView from '@/views/AboutMeView.vue'
 import WorkView from '@/views/WorkView.vue'
+import ContactView from '@/views/ContactView.vue'
 import { useDisplay } from 'vuetify'
 
 const { mdAndUp } = useDisplay()
@@ -40,4 +41,5 @@ const { mdAndUp } = useDisplay()
   </div>
   <about-me-view />
   <work-view />
+  <contact-view />
 </template>

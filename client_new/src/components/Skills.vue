@@ -1,12 +1,6 @@
 <script setup lang="ts">
+import type { SkillItem } from '@/type'
 import PageContentLayout from '@/layouts/PageContentLayout.vue'
-
-export type SkillItem = {
-  title: string
-  icon: string
-  text: string
-  capabilities: string[]
-}
 
 const props = defineProps<{
   skillItems: SkillItem[]

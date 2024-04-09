@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { StrengthFinderItem, SnsItem } from '@/type'
 import gitHibLogoImg from '@/assets/svg/github.svg'
 import twitterLogoImg from '@/assets/svg/twitter.svg'
 import wantedlyLogoImg from '@/assets/svg/wantedly.svg'
 import zennLogoImg from '@/assets/svg/zenn.svg'
-import type { StrengthFinderItem, SnsItem } from '@/components/Profile.vue'
 import profile from '@/components/Profile.vue'
 import history from '@/components/History.vue'
 

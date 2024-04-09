@@ -1,17 +1,8 @@
 <script setup lang="ts">
+import type { StrengthFinderItem, SnsItem } from '@/type'
 import profileImg from '@/assets/png/profile.png'
 import PageContentLayout from '@/layouts/PageContentLayout.vue'
 import { useDisplay } from 'vuetify'
-
-export type StrengthFinderItem = {
-  color: string
-  text: string
-}
-
-export type SnsItem = {
-  link: string
-  icon: string
-}
 
 const props = defineProps<{
   strengthFinderItems: StrengthFinderItem[]

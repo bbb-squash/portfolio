@@ -1,13 +1,6 @@
 <script setup lang="ts">
+import type { ProjectItem } from '@/type'
 import PageContentLayout from '@/layouts/PageContentLayout.vue'
-
-export type ProjectItem = {
-  title: string
-  text: string
-  tools: string[]
-  image: string
-  date: string
-}
 
 const props = defineProps<{
   projectItems: ProjectItem[]
