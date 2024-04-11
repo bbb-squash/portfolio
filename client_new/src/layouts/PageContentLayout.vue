@@ -3,9 +3,7 @@ type Props = {
   title: string
 }
 
-const props: Props = defineProps<{
-  title: string
-}>()
+const props: Props = defineProps<Props>()
 </script>
 
 <template>

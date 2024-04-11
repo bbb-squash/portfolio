@@ -7,6 +7,9 @@
 .max-w-160px {
   max-width: 160px;
 }
+.min-w-270px {
+  min-width: 270px;
+}
 .min-h-80px {
   min-height: 80px;
 }

@@ -16,7 +16,7 @@ const props = defineProps<{
     <template v-slot:content>
       <v-col>
         <v-row>
-          <v-col v-for="(item, index) in props.skillItems" :key="index" sm="12" md="4">
+          <v-col v-for="(item, index) in props.skillItems" :key="index" md="4" sm="12" xs="12">
             <div class="box-shadow rounded-lg border-t-xl border-secondary h-100 pa-3">
               <div class="d-flex align-center">
                 <div
