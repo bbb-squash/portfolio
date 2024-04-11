@@ -3,35 +3,71 @@ import type { SnsItem } from '@/type'
 import PageContentLayout from '@/layouts/PageContentLayout.vue'
 import { useDisplay } from 'vuetify'
 import { ref, type Ref } from 'vue'
+import axios from 'axios'
 const { mdAndUp } = useDisplay()
 
 type Props = {
   snsItems: SnsItem[]
 }
 
+type FormState = {
+  name: string
+  email: string
+  content: string
+}
+
+const useForm = () => {
+  const form = ref()
+  const formState: Ref<FormState> = ref({
+    name: '',
+    email: '',
+    content: ''
+  })
+
+  const isShowSubmitBtn: Ref<boolean> = ref(false)
+  const isLoading: Ref<boolean> = ref(false)
+
+  const ruleIsNotBlank = (value: any) => !!value || 'この項目は入力必須項目です'
+
+  const confirm = async () => {
+    const { valid } = await form.value.validate()
+    if (valid) isShowSubmitBtn.value = true
+  }
+
+  const submit = async () => {
+    isLoading.value = true
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${import.meta.env.VITE_APP_API_BEARER_TOKEN}`,
+      'Access-Control-Allow-Origin': '*'
+    }
+    const response = await axios.post(import.meta.env.VITE_APP_API_ENDPOINT, formState.value, {
+      headers
+    })
+    isLoading.value = false
+    isShowSubmitBtn.value = false
+
+    // setTimeout(() => {
+    //   form.value.reset()
+    //   form.value.resetValidation()
+    //   isLoading.value = false
+    //   isShowSubmitBtn.value = false
+    // }, 1000)
+  }
+
+  return {
+    form,
+    formState,
+    isShowSubmitBtn,
+    isLoading,
+    ruleIsNotBlank,
+    confirm,
+    submit
+  }
+}
+
 const props: Props = defineProps<Props>()
-const form = ref()
-const name: Ref<string> = ref('')
-const email: Ref<string> = ref('')
-const inquiry: Ref<string> = ref('')
-
-const isShowSubmitBtn: Ref<boolean> = ref(false)
-const isLoading: Ref<boolean> = ref(false)
-const ruleIsNotBlank = (value: any) => !!value || 'この項目は入力必須項目です'
-
-const confirm = async () => {
-  const { valid } = await form.value.validate()
-  if (!valid) return
-  isShowSubmitBtn.value = true
-}
-
-const submit = async () => {
-  isLoading.value = true
-  form.value.reset()
-  form.value.resetValidation()
-  isLoading.value = false
-  isShowSubmitBtn.value = false
-}
+const { form, formState, isShowSubmitBtn, isLoading, ruleIsNotBlank, confirm, submit } = useForm()
 </script>
 
 <template>
@@ -87,7 +123,7 @@ const submit = async () => {
                 >以下の内容で受け付けします。内容をご確認の上、「送信」をクリックしてください。</span
               >
               <v-text-field
-                v-model="name"
+                v-model="formState.name"
                 placeholder="お名前"
                 variant="outlined"
                 color="primary"
@@ -95,7 +131,7 @@ const submit = async () => {
                 :rules="[ruleIsNotBlank]"
               />
               <v-text-field
-                v-model="email"
+                v-model="formState.email"
                 placeholder="メールアドレス"
                 variant="outlined"
                 color="primary"
@@ -103,7 +139,7 @@ const submit = async () => {
                 :rules="[ruleIsNotBlank]"
               />
               <v-textarea
-                v-model="inquiry"
+                v-model="formState.content"
                 placeholder="お問い合わせ内容"
                 variant="outlined"
                 color="primary"
@@ -112,26 +148,25 @@ const submit = async () => {
               />
             </div>
             <template v-if="isShowSubmitBtn">
-              <v-btn class="mx-2" elevation="0" color="primary" type="submit">送信</v-btn>
+              <v-btn class="mx-2" elevation="0" color="primary" :loading="isLoading" type="submit"
+                >送信</v-btn
+              >
               <v-btn
                 class="mx-2"
                 elevation="0"
                 variant="outlined"
                 color="primary"
-                @click="() => (isShowSubmitBtn = false)"
+                @click="
+                  () => {
+                    if (!isLoading) isShowSubmitBtn = false
+                  }
+                "
                 :disabled="isLoading"
                 >キャンセル</v-btn
               >
             </template>
             <template v-else>
-              <v-btn
-                class="px-4"
-                elevation="0"
-                color="primary"
-                :loading="isLoading"
-                @click="confirm"
-                >確認</v-btn
-              >
+              <v-btn class="px-4" elevation="0" color="primary" @click="confirm">確認</v-btn>
             </template>
           </v-form>
         </v-col>
