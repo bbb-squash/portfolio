@@ -2,7 +2,7 @@ import '@/assets/style.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-
+import VueGTag from 'vue-gtag'
 import 'vuetify/styles'
 import 'vuetify/util/colors'
 import { createVuetify } from 'vuetify'
@@ -28,4 +28,8 @@ const vuetify = createVuetify({
   }
 })
 
-createApp(App).use(router).use(vuetify).mount('#app')
+createApp(App)
+  .use(VueGTag, { config: { id: import.meta.env.VITE_APP_GA_ID } })
+  .use(router)
+  .use(vuetify)
+  .mount('#app')
