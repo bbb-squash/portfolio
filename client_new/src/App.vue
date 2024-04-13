@@ -7,11 +7,9 @@ import AppHeader from '@/components/AppHeader.vue'
     <v-main>
       <router-view />
       <v-footer class="bg-grey-lighten-4">
-        <v-row justify="center" no-gutters>
-          <v-col class="text-center mt-4 text-primary" cols="12">
-            {{ new Date().getFullYear() }} — <strong>BBB-SQUASH</strong>
-          </v-col>
-        </v-row>
+        <div class="w-100 my-2 text-center">
+          <span>{{ new Date().getFullYear() }} — <strong>BBB-SQUASH</strong></span>
+        </div>
       </v-footer>
     </v-main>
   </v-layout>
