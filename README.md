@@ -35,3 +35,10 @@ npm run build
 ```
 
 ## Backend
+
+<div style="display: flex;">
+  <img src="https://img.shields.io/badge/Node.js-14.0.x-339933?logo=nodedotjs" />
+  <img src="https://img.shields.io/badge/Serverless Framework-FD5750?logo=serverless" />
+  <img src="https://img.shields.io/badge/AWS%20API%20Gateway-232f3e?logo=amazonapigateway" />
+  <img src="https://img.shields.io/badge/AWS%20Lambda-232f3e?logo=awslambda" />
+</div>
