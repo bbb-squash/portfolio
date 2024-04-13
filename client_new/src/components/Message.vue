@@ -16,6 +16,14 @@ type FormState = {
   content: string
 }
 
+type FormAlertState = {
+  isShow: boolean
+  closeable: boolean
+  text: string
+  type: 'error' | 'success' | 'warning' | 'info'
+  icon: string
+}
+
 const useForm = () => {
   const form = ref()
   const formState: Ref<FormState> = ref({
@@ -24,50 +32,77 @@ const useForm = () => {
     content: ''
   })
 
+  const formAlertState: Ref<FormAlertState> = ref({
+    isShow: false,
+    closeable: false,
+    text: '',
+    type: 'info',
+    icon: ''
+  })
+
   const isShowSubmitBtn: Ref<boolean> = ref(false)
   const isLoading: Ref<boolean> = ref(false)
 
   const ruleIsNotBlank = (value: any) => !!value || 'この項目は入力必須項目です'
 
-  const confirm = async () => {
-    const { valid } = await form.value.validate()
-    if (valid) isShowSubmitBtn.value = true
-  }
-
-  const submit = async () => {
-    isLoading.value = true
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${import.meta.env.VITE_APP_API_BEARER_TOKEN}`,
-      'Access-Control-Allow-Origin': '*'
-    }
-    const response = await axios.post(import.meta.env.VITE_APP_API_ENDPOINT, formState.value, {
-      headers
-    })
-    isLoading.value = false
-    isShowSubmitBtn.value = false
-
-    // setTimeout(() => {
-    //   form.value.reset()
-    //   form.value.resetValidation()
-    //   isLoading.value = false
-    //   isShowSubmitBtn.value = false
-    // }, 1000)
-  }
-
   return {
     form,
     formState,
+    formAlertState,
     isShowSubmitBtn,
     isLoading,
-    ruleIsNotBlank,
-    confirm,
-    submit
+    ruleIsNotBlank
   }
 }
 
 const props: Props = defineProps<Props>()
-const { form, formState, isShowSubmitBtn, isLoading, ruleIsNotBlank, confirm, submit } = useForm()
+const { form, formState, formAlertState, isShowSubmitBtn, isLoading, ruleIsNotBlank } = useForm()
+
+const confirm = async () => {
+  formAlertState.value.isShow = false
+  formAlertState.value.closeable = false
+
+  const { valid } = await form.value.validate()
+
+  if (valid) {
+    isShowSubmitBtn.value = true
+    formAlertState.value.type = 'info'
+    formAlertState.value.isShow = true
+    formAlertState.value.text =
+      '以下の内容で受け付けします。内容をご確認の上、「送信」をクリックしてください。'
+  }
+}
+
+const cancel = () => {
+  if (!isLoading.value) {
+    isShowSubmitBtn.value = false
+    formAlertState.value.isShow = false
+  }
+}
+
+const submit = async () => {
+  isLoading.value = true
+  const headers = {
+    Authorization: `Bearer ${import.meta.env.VITE_APP_API_BEARER_TOKEN}`
+  }
+  const response = await axios.post(import.meta.env.VITE_APP_API_ENDPOINT, formState.value, {
+    headers
+  })
+
+  if (response.status === 200) {
+    formAlertState.value.type = 'success'
+    formAlertState.value.text =
+      'お問い合わせありがとうございます。入力いただいた内容で受付いたしました。'
+    form.value.reset()
+  } else {
+    formAlertState.value.type = 'error'
+    formAlertState.value.text =
+      '申し訳ありません。システムエラーで送信に失敗しております。時間を置いて再度実行いただくか、emailにてご連絡ください。'
+  }
+  formAlertState.value.closeable = true
+  isShowSubmitBtn.value = false
+  isLoading.value = false
+}
 </script>
 
 <template>
@@ -119,9 +154,16 @@ const { form, formState, isShowSubmitBtn, isLoading, ruleIsNotBlank, confirm, su
           <v-form @submit.prevent="submit" ref="form">
             <div class="text-left mb-2">
               <h2 class="text-primary mb-5">お問い合わせフォーム</h2>
-              <span v-if="isShowSubmitBtn"
-                >以下の内容で受け付けします。内容をご確認の上、「送信」をクリックしてください。</span
+              <v-alert
+                v-if="formAlertState.isShow"
+                :type="formAlertState.type"
+                variant="outlined"
+                density="compact"
+                :closable="formAlertState.closeable"
+                class="mb-3"
               >
+                {{ formAlertState.text }}
+              </v-alert>
               <v-text-field
                 v-model="formState.name"
                 placeholder="お名前"
@@ -156,11 +198,7 @@ const { form, formState, isShowSubmitBtn, isLoading, ruleIsNotBlank, confirm, su
                 elevation="0"
                 variant="outlined"
                 color="primary"
-                @click="
-                  () => {
-                    if (!isLoading) isShowSubmitBtn = false
-                  }
-                "
+                @click="cancel"
                 :disabled="isLoading"
                 >キャンセル</v-btn
               >
