@@ -15,7 +15,7 @@ const { smAndDown } = useDisplay()
     <template v-slot:description>
       小学生の頃からパソコンは使用し始め、Youtubeやニコニコ動画を見ていました。<br />
       その後、大学生の時からプログラムを勉強し始め、コンサル会社・広告事業会社のほか、学生時代のインターン
-      / 業務委託を含めると5社で勤務した経験があります。
+      / 業務委託を含めると4社で勤務した経験があります。
     </template>
     <template v-slot:content>
       <v-col>
