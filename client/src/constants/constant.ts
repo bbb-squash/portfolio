@@ -123,13 +123,6 @@ export const snsItems: SnsItem[] = [
 export const historyItems: HistoryItem[] = [
   {
     year: 2023,
-    title: '株式会社MAGLAB',
-    text: 'センシングシステムや、toC向けのモバイルアプリケーション開発で、スクラッチのバックエンド開発を行っています。',
-    remarks: '業務委託',
-    dotColor: 'primary'
-  },
-  {
-    year: 2023,
     title: '株式会社サイバーエージェント',
     text: '広告事業に関するシステムのビジネスロジックの作成、大規模アカウントのデータ管理や、データ量の大きいAPIの制御・効率化などを行っております。',
     dotColor: 'accent'
